@@ -1,27 +1,32 @@
 import pandas as pd
-import unicodedata
+from .graph import Graph  
 
-df = pd.read_csv("projeto_grafos/data/bairros_recife.csv", header=None)
+def carregar_grafo(path_nodes='data/bairros_unique.csv', 
+                   path_edges='data/adjacencias_bairros.csv'):
 
-microrregioes = df.iloc[0]
-df = df.drop(0).reset_index(drop=True)
+    g = Graph()
+    try:
+        df_nodes = pd.read_csv(path_nodes)
+        for _, row in df_nodes.iterrows():
+            g.add_node(node_name=row['bairro'], microrregiao=row['microrregiao'])
+        print(f"--- Nós carregados: {g.get_order()} bairros lidos de '{path_nodes}'")
+    except FileNotFoundError:
+        print(f"Erro: Arquivo de nós não encontrado em '{path_nodes}'")
+        return None
+    except KeyError:
+        print("Erro: O 'bairros_unique.csv' deve ter as colunas 'bairro' e 'microrregiao'.")
+        return None
 
-df.columns = microrregioes
+    try:
+        df_edges = pd.read_csv(path_edges)
+        for _, row in df_edges.iterrows():
+            g.add_edge(node1=row['bairro_origem'], 
+                       node2=row['bairro_destino'], 
+                       peso=row['peso'])
+        print(f"--- Arestas carregadas: {g.get_size()} conexões lidas de '{path_edges}'")
+    except FileNotFoundError:
+        print(f"Aviso: Arquivo de arestas '{path_edges}' não encontrado. O grafo será carregado sem arestas.")
+    except KeyError:
+        print("Erro: O 'adjacencias_bairros.csv' deve ter as colunas 'bairro_origem', 'bairro_destino' e 'peso'.")
 
-df_melt = df.melt(var_name="microrregiao", value_name="bairro")
-
-df_melt = df_melt.dropna(subset=["bairro"])
-df_melt = df_melt[df_melt["bairro"].str.strip() != ""]
-
-def normalizar(texto):
-    texto = unicodedata.normalize("NFKD", str(texto))
-    texto = "".join(c for c in texto if not unicodedata.combining(c))
-    return texto.strip().title()
-
-df_melt["bairro"] = df_melt["bairro"].apply(normalizar)
-
-bairros_unique = df_melt.drop_duplicates(subset=["bairro"])
-
-bairros_unique.to_csv("projeto_grafos/data/bairros_unique.csv", index=False)
-
-print(" Arquivo 'bairros_unique.csv' gerado")
+    return g
