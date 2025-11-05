@@ -1,0 +1,198 @@
+bairro_origem,bairro_destino,peso,logradouro
+curado,sancho,1499.4,Av Liberdade
+curado,varzea,3178.48,R. Min Mario Andreazza
+curado,toto,1578.28,R. Ana Albuquerque Lima
+curado,engenho do meio,2469.76,R. José Dos Santos
+curado,torroes,2715.07,R. Brejo Novo
+curado,jardim sao paulo,2026.59,R. Agostinho Barbalho
+dois unidos,passarinho,2248.75,R. Dr Antônio da Rosa Borges
+dois unidos,linha do tiro,1457.84,R. Eladio Camboim
+dois unidos,brejo de beberibe,1176.22,R. Muraja
+aflitos,espinheiro,668.68,R. Santo Elias
+aflitos,gracas,729.03,R. Angustura
+aflitos,encruzilhada,775.51,R. Amapa
+sancho,toto,794.18,R. Paulino de Farias
+sancho,tejipio,704.9,R. Aprigio Guimaraes
+sancho,coqueiral,814.67,R. Candeal
+varzea,cidade universitaria,2906.38,R. Prof Antônio Coelho
+varzea,iputinga,4618.82,R. Prof Chaves Batista
+coelhos,sao jose,738.19,Pte Seis de Março
+coelhos,santo antonio,1321.38,R. Dr José Mariano
+coelhos,ilha joana bezerra,1077.66,Pte Joaquim  Cardoso
+coelhos,ilha do leite,584.2,R. Esperanto
+coelhos,boa vista,1038.2,R. dos Coelhos
+peixinhos,campina do barreto,586.26,R. Campo Redondo
+peixinhos,arruda,1580.84,R. Poeta Jayme Griz
+peixinhos,campo grande,1334.39,Av Correia de Brito
+sao jose,santo antonio,1397.82,R. da Carioca
+sao jose,recife,3009.93,Pte Giratória
+sao jose,ilha joana bezerra,1439.57,R. Cabo Eutropio
+sao jose,cabanga,1224.86,R. Bom Sucesso
+sao jose,afogados,2822.89,Pte de Afogados
+santo antonio,recife,1618.07,Pte Buarque de Macedo
+santo antonio,santo amaro,1708.04,R. da Aurora
+santo antonio,boa vista,1395.8,Av Conde da Boa Vista
+recife,santo amaro,1355.68,R. Carlos Salazar
+recife,brasilia teimosa,3175.74,Diq do Recife
+hipodromo,encruzilhada,536.17,R. Marques de Baipendi
+hipodromo,campo grande,912.53,R. Carlos Fernandes
+hipodromo,ponto de parada,595.89,R. Profa Antonia Ribeiro Campos
+rosarinho,gracas,1497.02,R. Des Martins Pereira
+rosarinho,tamarineira,607.12,R. Gal Abreu e Lima
+rosarinho,encruzilhada,795.98,R. Amaro Coutinho
+rosarinho,ponto de parada,609.75,R. Couto Magalhães
+campina do barreto,arruda,1213.62,R. Clara
+campina do barreto,cajueiro,757.82,R. Alice Tibirica
+campina do barreto,fundao,1081.18,R. Assai
+campina do barreto,agua fria,1628.64,R. Marcilio Dias
+casa forte,parnamirim,832.31,R. Alfredo Fernandes
+casa forte,santana,787.15,R. Laurindo Coelho
+casa forte,poco,547.01,R. dos Arcos
+casa forte,casa amarela,871.39,R. Ernesto Rufino
+parnamirim,santana,821.02,R. Joaquim Soares
+parnamirim,tamarineira,1020.38,R. Afonso Celso
+parnamirim,jaqueira,755.08,Prc Manuel Markman
+parnamirim,casa amarela,1109.55,R. Astronauta Neil Armstrong
+guabiraba,dois irmaos,5353.1,Av Embaixador Assis Chateaubriand
+ilha joana bezerra,paissandu,774.82,Pte José de Barros Lima
+ilha joana bezerra,ilha do retiro,973.51,Pte Gregório Bezerra
+ilha joana bezerra,afogados,1570.89,R. Crisopolis
+cabanga,pina,1516.74,Pte Agamenon Magalhães
+ilha do leite,boa vista,885.73,R. Estado de Israel
+ilha do leite,paissandu,453.59,R. Dr João Asfora
+mangueira,san martin,1233.95,R. Bom Jardim
+mangueira,mustardinha,593.99,R. Coracao de Jesus
+mangueira,jiquia,955.89,R. Palestina
+mangueira,afogados,1021.24,R. Alexandre Rodrigues Ferreira
+santo amaro,boa vista,1644.53,R. Alvares de Azevedo
+santo amaro,espinheiro,1387.19,Vdo Pres Médici
+santo amaro,torreao,945.81,Av Dr Jayme da Fonte
+santo amaro,soledade,1524.52,R. Afonso Pena
+santo amaro,campo grande,1894.34,Vdo Eng Roberto Perreira de Carvalho
+boa vista,espinheiro,1615.55,R. Dr Leopoldo Lins
+boa vista,derby,1127.11,R. Dom Bosco
+boa vista,paissandu,1072.06,R. John Gustav Peter
+boa vista,gracas,1772.89,Prc Parque Amorim
+boa vista,soledade,166.04,R. Corredor do Bispo
+espinheiro,gracas,977.57,R. do Espinheiro
+espinheiro,encruzilhada,887.84,R. Marques do Parana
+derby,paissandu,893.17,R. Vis do Livramento
+derby,gracas,1131.9,R. Amaro Bezerra
+derby,madalena,920.68,Pte Estácio Coimbra
+santana,jaqueira,1194.71,Pte do Vintém
+santana,poco,1011.32,R. Eng Jair Furtado Meirelles
+paissandu,ilha do retiro,723.14,Pte Pref Lima de Castro
+gracas,torre,1113.09,Pte Eng Cândido Pinto de Melo
+gracas,tamarineira,1687.99,R. Antenor Navarro
+gracas,jaqueira,1077.13,R. Antônio Celso Uchoa Cavalcanti
+gracas,madalena,1312.91,Pte Prof Moraes Rego
+torre,zumbi,1318.41,R. Diogo Alvares
+torre,madalena,1188.33,R. Davino Pontual
+torre,cordeiro,2037.45,R. Catolandia
+arruda,tamarineira,1528.64,Est. Velha de Água Fria
+arruda,bomba do hemeterio,1352.79,R. São Bento
+arruda,campo grande,1339.5,R. Jeronimo Vilela
+arruda,agua fria,1141.24,R. Alegre
+engenho do meio,cidade universitaria,921.66,R. Antônio Borges Uchoa
+engenho do meio,torroes,897.73,R. Alexandria
+engenho do meio,iputinga,2326.79,R. Alvaro Teixeira de Mesquita
+cajueiro,porto da madeira,686.25,R. Dr Alberto Wanderley
+cajueiro,fundao,723.01,R. Andre Bezerra
+zumbi,prado,811.48,R. Abdias de Oliveira
+zumbi,madalena,1032.95,R. Eduardo Antônio
+zumbi,cordeiro,1107.5,R. Brasilandia
+tamarineira,jaqueira,781.61,R. Hoel Sette
+tamarineira,casa amarela,1681.8,Est. do Arraial
+bongi,prado,676.52,Av Eng Abdias de Carvalho
+bongi,san martin,1226.93,R. Acajutiba
+bongi,mustardinha,618.8,R. Dr Armando Tavares
+bongi,afogados,1503.93,R. Escritor Alvaro Lins
+cidade universitaria,iputinga,2384.46,R. Borges da Fonseca
+torreao,encruzilhada,963.53,R. Augusto Rodrigues
+torreao,campo grande,1134.85,R. Djalma Farias
+cacote,areias,658.08,R. Dona Ana Aurora
+cacote,ibura,2109.27,Est. de Ferro de São Francisco
+ipsep,areias,1969.72,R. Terezina
+ipsep,ibura,1627.67,R. Alaíde de Sá Leitão
+ipsep,imbiribeira,1205.19,R. Alexandre Almeida
+porto da madeira,fundao,776.0,R. Alto do Benjamim
+porto da madeira,beberibe,741.76,R. do Anil
+porto da madeira,agua fria,1237.04,R. Ajapi
+jordao,ibura,1798.88,R. Dr Alvaro Ferraz
+jordao,boa viagem,3839.81,R. Canal do Jordao
+prado,san martin,1709.07,Av Gal San Martin
+prado,cordeiro,1599.85,R. Antônio Machado
+prado,ilha do retiro,1387.47,R. Padre Gabriel Mousinho
+prado,afogados,2016.63,R. Brejo da Madre de Deus
+dois irmaos,caxanga,2351.6,R. Manuel de Medeiros
+dois irmaos,apipucos,1755.7,R. Dois Irmaos
+madalena,ilha do retiro,1153.18,R. Benfica
+torroes,san martin,1190.03,R. Delmiro Gouveia
+torroes,cordeiro,1626.91,R. Antônio Carlos
+iputinga,cordeiro,1828.7,R. Ambrosio Machado
+iputinga,caxanga,1993.72,R. Alcides Codeceira
+iputinga,monteiro,1341.93,Pte Barqueiro Sinval Peixoto da Silva
+san martin,jardim sao paulo,2155.44,Av João Cabral de M. Neto
+san martin,mustardinha,1099.07,R. Araguaia
+san martin,jiquia,1757.71,R. Santo Angelo
+passarinho,brejo da guabiraba,1943.09,Av Pres Cafe Filho
+passarinho,brejo de beberibe,2079.79,Av Canaa
+jardim sao paulo,areias,1986.12,R. José Natario
+jardim sao paulo,tejipio,1746.41,R. Prof Henrique de Lucena
+jardim sao paulo,estancia,1517.59,R. Sen Alberto Pasqualini
+areias,barro,2236.34,R. Cap Alfredo Passos
+areias,estancia,1208.45,R. Dr Adelino Filho
+areias,jiquia,1421.21,R. Elizeu Cesar
+estancia,jiquia,671.05,R. Antônio Carneiro
+fundao,agua fria,643.29,R. Alto Bonito
+poco,casa amarela,1244.69,R. Prof Alvaro Lima
+poco,monteiro,1216.78,R. Jorge de Albuquerque
+beberibe,linha do tiro,1037.74,R. Almenara
+beberibe,agua fria,1241.35,R. Alto Longa
+bomba do hemeterio,mangabeira,408.34,R. Itabira
+bomba do hemeterio,alto jose do pinho,740.95,R. Arlindo Cisneiro
+bomba do hemeterio,alto santa terezinha,901.56,R. Airi
+bomba do hemeterio,agua fria,758.11,R. Antônio Meira
+mangabeira,alto jose do pinho,664.09,R. Aquiraz
+casa amarela,alto do mandu,1283.73,R. Coruripe
+casa amarela,morro da conceicao,775.2,R. Bugari
+casa amarela,alto jose do pinho,1052.78,R. Arnoldo Magalhães
+casa amarela,vasco da gama,1583.7,R. Paraisopolis
+casa amarela,monteiro,1337.92,R. Altino
+linha do tiro,alto jose bonifacio,983.85,R. Alto da Saudade
+linha do tiro,alto santa terezinha,808.11,R. Alto Brasil
+linha do tiro,brejo de beberibe,2329.92,R. Exp Valdemar Adelino
+linha do tiro,agua fria,1242.95,R. Alcantil
+encruzilhada,campo grande,1356.39,R. Caturama
+encruzilhada,ponto de parada,719.95,R. Joaquim Tavora
+brasilia teimosa,pina,2362.71,R. Araguari
+pina,boa viagem,3868.16,Av Cons Aguiar
+pina,imbiribeira,2317.48,R. São José
+brejo da guabiraba,brejo de beberibe,1248.02,R. Coral
+brejo da guabiraba,nova descoberta,1458.52,R. Dom Feliciano
+brejo da guabiraba,corrego do jenipapo,1161.25,R. Aracari
+ilha do retiro,afogados,1667.41,Pte dos Remedios
+mustardinha,afogados,1103.25,R. Adolfo Bezerra
+ibura,boa viagem,3355.14,R. Prof Aurélio de Castro Cavalcanti
+ibura,imbiribeira,2793.72,Av Pres Dutra
+alto jose bonifacio,morro da conceicao,718.43,R. Condor
+alto jose bonifacio,alto jose do pinho,1093.08,R. Corrego José Grande
+alto jose bonifacio,vasco da gama,722.86,R. Alto do Bambui
+alto jose bonifacio,alto santa terezinha,592.73,R. Albino Kross
+alto do mandu,macaxeira,1150.71,R. Aroeira
+alto do mandu,monteiro,503.46,R. Jaguarana
+morro da conceicao,alto jose do pinho,704.5,R. Alto Alegre
+morro da conceicao,vasco da gama,1016.3,R. Serrana
+alto jose do pinho,alto santa terezinha,708.77,R. Mario de Andrade
+vasco da gama,brejo de beberibe,1558.29,R. Bemposta
+vasco da gama,nova descoberta,1233.29,R. N S da Ajuda
+boa viagem,imbiribeira,2687.78,R. Adauto Carneiro Leal
+alto santa terezinha,agua fria,1274.26,R. Serra Negra
+macaxeira,nova descoberta,823.31,R. Alto Buriti
+macaxeira,apipucos,1072.68,R. Cel João Batista do Rego Barros
+macaxeira,corrego do jenipapo,1223.08,R. Erundina Negreiros de Araujo
+brejo de beberibe,nova descoberta,872.98,R. Agrolandia
+nova descoberta,corrego do jenipapo,988.43,R. Alvares Florense
+monteiro,apipucos,1224.8,R. de Apipucos
+imbiribeira,afogados,3055.85,R. Alvorada do Norte
+jiquia,afogados,1614.84,R. Belem de Maria
