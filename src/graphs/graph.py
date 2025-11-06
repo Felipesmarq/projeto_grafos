@@ -32,3 +32,10 @@ class Graph:
     def get_size(self):
         total_edges = sum(len(neighbors) for neighbors in self.adj_list.values())
         return total_edges // 2
+    
+    def get_density(self):
+        n = self.get_order()
+        m = self.get_size()
+        if n < 2:
+            return 0
+        return (2 * m) / (n * (n - 1))
