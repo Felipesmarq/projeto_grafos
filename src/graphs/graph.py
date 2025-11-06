@@ -39,3 +39,34 @@ class Graph:
         if n < 2:
             return 0
         return (2 * m) / (n * (n - 1))
+    
+    def subgraph_from_nodes(self, nodes_subset):
+        """ Retorna um novo grafo apenas com os nós do subset e arestas entre eles """
+        sg = Graph()
+        for n in nodes_subset:
+            meta = self.get_node_attributes(n)
+            if meta:
+                sg.add_node(n, meta['microrregiao'])
+
+        for n in nodes_subset:
+            for (viz, peso) in self.get_neighbors(n):
+                if viz in nodes_subset:
+                    sg.add_edge(n, viz, peso)
+
+        return sg
+
+    def subgraph_by_microrregiao(self, microrregiao):
+        """ Subgrafo induzido por uma microrregião """
+        nodes = [n for n, attr in self.nodes.items() if attr['microrregiao'] == microrregiao]
+        return self.subgraph_from_nodes(nodes)
+
+    def ego_network(self, node):
+        """ Ego network: v ∪ N(v) """
+        if node not in self.adj_list:
+            return None
+
+        egonodes = {node} | {v for v, _ in self.get_neighbors(node)}
+        return self.subgraph_from_nodes(egonodes)
+
+    def degree(self, node):
+        return len(self.get_neighbors(node))

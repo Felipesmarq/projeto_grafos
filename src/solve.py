@@ -1,4 +1,5 @@
 from .graphs.io import carregar_grafo
+import pandas as pd
 
 def main():
     print("--- Iniciando Projeto de Grafos (Carregamento) ---")
@@ -6,15 +7,50 @@ def main():
     grafo = carregar_grafo()
 
     if grafo:
-        print("\n--- Verificação do Grafo ---")
-        
-        ordem = grafo.get_order()
-        tamanho = grafo.get_size()
-        densidade = grafo.get_density()
-        
-        print(f"Ordem do Grafo (Bairros): {ordem}")
-        print(f"Tamanho do Grafo (Conexões): {tamanho}")
-        print(f"Densidade do Grafo: {densidade:.4f}")
+        recife = []
+        recife.append({
+            "ordem": grafo.get_order(),
+            "tamanho": grafo.get_size(),
+            "densidade": round(grafo.get_density(), 4)
+            })
+
+    df_recife = pd.DataFrame(recife)
+    df_recife.to_json("data/recife.json", index=False)
+    
+
+    micros = set(attr['microrregiao'] for attr in grafo.nodes.values())
+
+    micro_results = []
+    for micro in micros:
+        sg = grafo.subgraph_by_microrregiao(micro)
+        micro_results.append({
+            "microrregiao": micro,
+            "ordem": sg.get_order(),
+            "tamanho": sg.get_size(),
+            "densidade": round(sg.get_density(), 4)
+        })
+
+    df_micro = pd.DataFrame(micro_results)
+    df_micro.to_json("data/microrregioes.json", index=False)
+
+    ego_results = []
+    for bairro in grafo.get_nodes():
+        ego = grafo.ego_network(bairro)
+        if ego:
+            ego_results.append({
+                "bairro": bairro,
+                "grau": grafo.degree(bairro),
+                "ordem_ego": ego.get_order(),
+                "tamanho_ego": ego.get_size(),
+                "densidade_ego": round(ego.get_density(), 4)
+            })
+
+    df_ego = pd.DataFrame(ego_results)
+    df_ego.to_csv("data/ego_bairro.csv", index=False)
+
+    graus = [{"bairro": n, "grau": grafo.degree(n)} for n in grafo.get_nodes()]
+    df_graus = pd.DataFrame(graus)
+    df_graus.to_csv("data/graus.csv", index=False)
 
 if __name__ == "__main__":
     main()
