@@ -70,7 +70,7 @@ cabanga,pina,1516.74,Pte Agamenon Magalhães
 cabanga,recife,2053.3,R. Imperial
 ilha do leite,boa vista,885.73,R. Estado de Israel
 ilha do leite,paissandu,453.59,R. Dr João Asfora
-ilha do leite, ilha joana bezerra,994.2,R. Francisco Alves
+ilha do leite,ilha joana bezerra,994.2,R. Francisco Alves
 mangueira,san martin,1233.95,R. Bom Jardim
 mangueira,mustardinha,593.99,R. Coracao de Jesus
 mangueira,jiquia,955.89,R. Palestina
@@ -158,7 +158,6 @@ san martin,mustardinha,1099.07,R. Araguaia
 san martin,jiquia,1757.71,R. Santo Angelo
 passarinho,brejo da guabiraba,1943.09,Av Pres Cafe Filho
 passarinho,brejo de beberibe,2079.79,Av Canaa
-brejo de
 jardim sao paulo,areias,1986.12,R. José Natario
 jardim sao paulo,tejipio,1746.41,R. Prof Henrique de Lucena
 jardim sao paulo,estancia,1517.59,R. Sen Alberto Pasqualini
@@ -168,7 +167,7 @@ areias,barro,2236.34,R. Cap Alfredo Passos
 areias,estancia,1208.45,R. Dr Adelino Filho
 areias,jiquia,1421.21,R. Elizeu Cesar
 estancia,jiquia,671.05,R. Antônio Carneiro
-estancia,san martim,937.08,R. Morais e Silva
+estancia,san martin,937.08,R. Morais e Silva
 prado,madalena,1597.05,R. Carlos Gomes
 fundao,agua fria,643.29,R. Alto Bonito
 poco,casa amarela,1244.69,R. Prof Alvaro Lima
@@ -183,7 +182,7 @@ mangabeira,alto jose do pinho,664.09,R. Aquiraz
 mangabeira,casa amarela,1579.29,R. Maragogi
 mangabeira,arruda,1410.33,R. Jacob
 mangabeira,tamarineira,679.1,R. da Mangabeira
-casa amarela,Nova Descoberta,2637.96,R. Vasco da Gama
+casa amarela,nova descoberta,2637.96,R. Vasco da Gama
 casa amarela,alto do mandu,1283.73,R. Coruripe
 casa amarela,morro da conceicao,775.2,R. Bugari
 casa amarela,alto jose do pinho,1052.78,R. Arnoldo Magalhães
@@ -213,7 +212,7 @@ alto jose bonifacio,vasco da gama,722.86,R. Alto do Bambui
 alto jose bonifacio,alto santa terezinha,592.73,R. Albino Kross
 alto do mandu,macaxeira,1150.71,R. Aroeira
 alto do mandu,monteiro,503.46,R. Jaguarana
-alto do mandu,nova descobesrta,1885.9,R. Nova Descoberta
+alto do mandu,nova descoberta,1885.9,R. Nova Descoberta
 alto do mandu,apipucos,1096.9,R. Mandacaru
 morro da conceicao,alto jose do pinho,704.5,R. Alto Alegre
 morro da conceicao,vasco da gama,1016.3,R. Serrana
@@ -253,7 +252,7 @@ pina,recife,1276.81,R. Princesa Isabel
 iputinga,apipucos,1938.09,R. itatiaia
 apipucos,corrego do jenipapo,1790.97,R. Leal de Barros
 corrego do jenipapo,dois irmaos,2873.4,Av. Recuperação
-brasilia teimosa, sao jose,2362.71, Av. Herculano Bandeira
+brasilia teimosa,sao jose,2362.71, Av. Herculano Bandeira
 tamarineira,alto jose do pinho,1697.8,R. Guimaraes Peixoto
 torreao,espinheiro,953.67,R. Barao Itamaraca
 barro,ibura,3166.8,Av. Pernambuco

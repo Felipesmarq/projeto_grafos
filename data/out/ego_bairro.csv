@@ -1,95 +1,95 @@
 bairro,grau,ordem_ego,tamanho_ego,densidade_ego
-aflitos,3,4,10,1.6667
+aflitos,4,5,16,1.6
 afogados,11,12,44,0.6667
-agua fria,8,9,32,0.8889
-alto do mandu,3,4,8,1.3333
-alto jose bonifacio,5,6,18,1.2
-alto jose do pinho,6,7,24,1.1429
-alto santa terezinha,5,6,20,1.3333
-apipucos,3,4,6,1.0
-areias,7,8,26,0.9286
-arruda,9,10,34,0.7556
-barro,3,4,8,1.3333
+agua fria,9,10,40,0.8889
+alto do mandu,5,6,20,1.3333
+alto jose bonifacio,6,7,26,1.2381
+alto jose do pinho,7,8,32,1.1429
+alto santa terezinha,6,7,26,1.2381
+apipucos,7,8,28,1.0
+areias,8,9,38,1.0556
+arruda,10,11,42,0.7636
+barro,5,6,18,1.2
 beberibe,4,5,14,1.4
 boa viagem,4,5,14,1.4
 boa vista,9,10,36,0.8
 bomba do hemeterio,5,6,20,1.3333
 bongi,4,5,16,1.6
-brasilia teimosa,2,3,4,1.3333
+brasilia teimosa,3,4,10,1.6667
 brejo da guabiraba,5,6,20,1.3333
-brejo de beberibe,6,7,22,1.0476
-cabanga,3,4,10,1.6667
-cacote,2,3,6,2.0
-cajueiro,3,4,10,1.6667
-campina do barreto,5,6,18,1.2
-campo grande,6,7,20,0.9524
-casa amarela,10,11,38,0.6909
+brejo de beberibe,7,8,28,1.0
+cabanga,4,5,16,1.6
+cacote,3,4,12,2.0
+cajueiro,4,5,18,1.8
+campina do barreto,5,6,20,1.3333
+campo grande,7,8,30,1.0714
+casa amarela,11,12,46,0.697
 casa forte,4,5,16,1.6
-caxanga,3,4,8,1.3333
+caxanga,5,6,18,1.2
 cidade universitaria,4,5,16,1.6
 coelhos,5,6,20,1.3333
-cohab,3,4,8,1.3333
-coqueiral,2,3,6,2.0
-cordeiro,9,10,34,0.7556
-corrego do jenipapo,4,5,14,1.4
-curado,8,9,28,0.7778
-derby,4,5,14,1.4
-dois irmaos,4,5,10,1.0
+cohab,3,4,10,1.6667
+coqueiral,3,4,10,1.6667
+cordeiro,9,10,36,0.8
+corrego do jenipapo,6,7,24,1.1429
+curado,9,10,34,0.7556
+derby,4,5,16,1.6
+dois irmaos,5,6,18,1.2
 dois unidos,4,5,14,1.4
-encruzilhada,7,8,24,0.8571
+encruzilhada,7,8,30,1.0714
 engenho do meio,5,6,20,1.3333
-espinheiro,5,6,18,1.2
-estancia,3,4,12,2.0
-fundao,4,5,16,1.6
-gracas,9,10,32,0.7111
-guabiraba,5,6,14,0.9333
-hipodromo,3,4,10,1.6667
-ibura,7,8,26,0.9286
-ilha do leite,3,4,10,1.6667
-ilha do retiro,5,6,16,1.0667
-ilha joana bezerra,6,6,20,1.3333
-imbiribeira,5,6,18,1.2
-ipsep,3,4,10,1.6667
-iputinga,7,8,24,0.8571
-jaqueira,4,5,14,1.4
-jardim sao paulo,7,8,26,0.9286
-jiquia,6,7,24,1.1429
+espinheiro,6,7,24,1.1429
+estancia,4,5,18,1.8
+fundao,4,5,18,1.8
+gracas,9,10,36,0.8
+guabiraba,5,6,16,1.0667
+hipodromo,4,5,18,1.8
+ibura,8,9,36,1.0
+ilha do leite,4,5,16,1.6
+ilha do retiro,5,6,20,1.3333
+ilha joana bezerra,6,7,24,1.1429
+imbiribeira,7,8,30,1.0714
+ipsep,4,5,18,1.8
+iputinga,8,9,32,0.8889
+jaqueira,5,6,22,1.4667
+jardim sao paulo,7,8,32,1.1429
+jiquia,7,8,32,1.1429
 jordao,3,4,10,1.6667
-linha do tiro,6,7,22,1.0476
-macaxeira,4,5,10,1.0
-madalena,5,6,16,1.0667
-mangabeira,5,6,20,1.3333
+linha do tiro,6,7,24,1.1429
+macaxeira,4,5,16,1.6
+madalena,7,8,28,1.0
+mangabeira,5,6,22,1.4667
 mangueira,4,5,16,1.6
-monteiro,5,6,16,1.0667
-morro da conceicao,4,5,16,1.6
+monteiro,5,6,20,1.3333
+morro da conceicao,5,6,22,1.4667
 mustardinha,4,5,16,1.6
-nova descoberta,5,6,18,1.2
-paissandu,5,6,16,1.0667
-parnamirim,5,6,20,1.3333
+nova descoberta,7,8,28,1.0
+paissandu,6,7,24,1.1429
+parnamirim,6,7,26,1.2381
 passarinho,4,5,14,1.4
 pau ferro,1,2,2,2.0
 peixinhos,3,4,10,1.6667
-pina,5,6,16,1.0667
+pina,6,7,22,1.0476
 poco,6,7,24,1.1429
-ponto de parada,4,5,14,1.4
-porto da madeira,4,5,14,1.4
-prado,6,7,22,1.0476
-recife,4,5,12,1.2
-rosarinho,5,6,18,1.2
-san martin,9,10,36,0.8
-sancho,4,5,12,1.2
-santana,5,6,18,1.2
-santo amaro,7,8,24,0.8571
+ponto de parada,5,6,24,1.6
+porto da madeira,4,5,16,1.6
+prado,7,8,28,1.0
+recife,6,7,24,1.1429
+rosarinho,6,7,24,1.1429
+san martin,10,11,42,0.7636
+sancho,4,5,16,1.6
+santana,6,7,26,1.2381
+santo amaro,7,8,26,0.9286
 santo antonio,5,6,20,1.3333
-sao jose,7,7,24,1.1429
+sao jose,7,8,28,1.0
 sitio dos pintos,2,3,6,2.0
 soledade,2,3,6,2.0
-tamarineira,7,8,28,1.0
-tejipio,2,3,4,1.3333
-torre,4,5,14,1.4
-torreao,3,4,10,1.6667
+tamarineira,8,9,34,0.9444
+tejipio,5,6,18,1.2
+torre,7,8,30,1.0714
+torreao,4,5,16,1.6
 torroes,4,5,16,1.6
 toto,3,4,10,1.6667
-varzea,3,4,10,1.6667
-vasco da gama,5,6,16,1.0667
-zumbi,4,5,14,1.4
+varzea,4,5,14,1.4
+vasco da gama,5,6,20,1.3333
+zumbi,4,5,16,1.6
