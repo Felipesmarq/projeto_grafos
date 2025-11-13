@@ -7,7 +7,7 @@ curado,torroes,2715.07,R. Brejo Novo
 curado,jardim sao paulo,2026.59,R. Agostinho Barbalho
 curado,cidade universitaria,2302.82,Av. Reitor Joaquim Amazonas
 curado,san martin,3308.29,R. Onze de Fevereiro
-curado,teijipio,2039.26,Av. Dr. José Rufino
+curado,tejipio,2039.26,Av. Dr. José Rufino
 dois unidos,passarinho,2248.75,R. Dr Antônio da Rosa Borges
 dois unidos,linha do tiro,1457.84,R. Eladio Camboim
 dois unidos,brejo de beberibe,1176.22,R. Muraja
@@ -18,7 +18,7 @@ aflitos,encruzilhada,775.51,R. Amapa
 sancho,toto,794.18,R. Paulino de Farias
 sancho,tejipio,704.9,R. Aprigio Guimaraes
 sancho,coqueiral,814.67,R. Candeal
-coqueiral,teijipio,768.97,R. Alto do Bela Vista
+coqueiral,tejipio,768.97,R. Alto do Bela Vista
 coqueiral,toto,1138.8,R. Ana Carneiro D'Albuquerque
 varzea,cidade universitaria,2906.38,R. Prof Antônio Coelho
 varzea,iputinga,4618.82,R. Prof Chaves Batista
@@ -123,6 +123,7 @@ cacote,ibura,2109.27,Est. de Ferro de São Francisco
 ipsep,areias,1969.72,R. Terezina
 ipsep,ibura,1627.67,R. Alaíde de Sá Leitão
 ipsep,imbiribeira,1205.19,R. Alexandre Almeida
+ipsep,cacote,1449.54,R. Femeb
 porto da madeira,fundao,776.0,R. Alto do Benjamim
 porto da madeira,beberibe,741.76,R. do Anil
 porto da madeira,agua fria,1237.04,R. Ajapi
@@ -138,6 +139,8 @@ madalena,ilha do retiro,1153.18,R. Benfica
 torroes,san martin,1190.03,R. Delmiro Gouveia
 torroes,cordeiro,1626.91,R. Antônio Carlos
 iputinga,cordeiro,1828.7,R. Ambrosio Machado
+caxanga,varzea,3098.8,Av. Afonso Olindense
+caxanga,apipucos,2075.86,R. Caetes
 iputinga,caxanga,1993.72,R. Alcides Codeceira
 iputinga,monteiro,1341.93,Pte Barqueiro Sinval Peixoto da Silva
 san martin,jardim sao paulo,2155.44,Av João Cabral de M. Neto
@@ -196,6 +199,8 @@ alto jose bonifacio,vasco da gama,722.86,R. Alto do Bambui
 alto jose bonifacio,alto santa terezinha,592.73,R. Albino Kross
 alto do mandu,macaxeira,1150.71,R. Aroeira
 alto do mandu,monteiro,503.46,R. Jaguarana
+alto do mandu,nova descobesrta,1885.9,R. de Apipucos
+alto do mandu,apipucos,1096.9,R. Mandacaru
 morro da conceicao,alto jose do pinho,704.5,R. Alto Alegre
 morro da conceicao,vasco da gama,1016.3,R. Serrana
 alto jose do pinho,alto santa terezinha,708.77,R. Mario de Andrade
@@ -229,3 +234,7 @@ ilha joana bezerra,sao jose,1439.57,R. Pref Jorge Martins
 cabanga,afogados,1848.24,Praca da Paz
 afogados,pina,2643.5,Pte. Governador Paulo Guerra
 brasilia teimosa, sao jose,2362.71, Av. Herculano Bandeira
+tamarineira,alto jose do pinho,1697.8,R. Guimaraes Peixoto
+torreao,espinheiro,953.67,R. Barao Itamaraca
+barro,ibura,3166.8,Av. Pernambuco
+barro,tejipio,4133.6,Av. Conde Pereira Carneiro
