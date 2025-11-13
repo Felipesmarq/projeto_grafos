@@ -29,7 +29,7 @@ caxanga,3,4,8,1.3333
 cidade universitaria,4,5,16,1.6
 coelhos,5,6,20,1.3333
 cohab,3,4,8,1.3333
-coqueiral,1,2,2,2.0
+coqueiral,2,3,6,2.0
 cordeiro,9,10,34,0.7556
 corrego do jenipapo,4,5,14,1.4
 curado,8,9,28,0.7778
@@ -77,7 +77,7 @@ prado,6,7,22,1.0476
 recife,4,5,12,1.2
 rosarinho,5,6,18,1.2
 san martin,9,10,36,0.8
-sancho,4,5,10,1.0
+sancho,4,5,12,1.2
 santana,5,6,18,1.2
 santo amaro,7,8,24,0.8571
 santo antonio,5,6,20,1.3333
@@ -89,7 +89,7 @@ tejipio,2,3,4,1.3333
 torre,4,5,14,1.4
 torreao,3,4,10,1.6667
 torroes,4,5,16,1.6
-toto,2,3,6,2.0
+toto,3,4,10,1.6667
 varzea,3,4,10,1.6667
 vasco da gama,5,6,16,1.0667
 zumbi,4,5,14,1.4
