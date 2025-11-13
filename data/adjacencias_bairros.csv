@@ -5,9 +5,13 @@ curado,toto,1578.28,R. Ana Albuquerque Lima
 curado,engenho do meio,2469.76,R. José Dos Santos
 curado,torroes,2715.07,R. Brejo Novo
 curado,jardim sao paulo,2026.59,R. Agostinho Barbalho
+curado,cidade universitaria,2302.82,Av. Reitor Joaquim Amazonas
+curado,san martin,3308.29,R. Onze de Fevereiro
+curado,teijipio,2039.26,Av. Dr. José Rufino
 dois unidos,passarinho,2248.75,R. Dr Antônio da Rosa Borges
 dois unidos,linha do tiro,1457.84,R. Eladio Camboim
 dois unidos,brejo de beberibe,1176.22,R. Muraja
+dois unidos,beberibe,1941.69,R. Divisópolis
 aflitos,espinheiro,668.68,R. Santo Elias
 aflitos,gracas,729.03,R. Angustura
 aflitos,encruzilhada,775.51,R. Amapa
@@ -41,6 +45,7 @@ rosarinho,gracas,1497.02,R. Des Martins Pereira
 rosarinho,tamarineira,607.12,R. Gal Abreu e Lima
 rosarinho,encruzilhada,795.98,R. Amaro Coutinho
 rosarinho,ponto de parada,609.75,R. Couto Magalhães
+rosarinho,arruda,1183.87,R. Caio Pereira
 campina do barreto,arruda,1213.62,R. Clara
 campina do barreto,cajueiro,757.82,R. Alice Tibirica
 campina do barreto,fundao,1081.18,R. Assai
@@ -93,6 +98,7 @@ arruda,tamarineira,1528.64,Est. Velha de Água Fria
 arruda,bomba do hemeterio,1352.79,R. São Bento
 arruda,campo grande,1339.5,R. Jeronimo Vilela
 arruda,agua fria,1141.24,R. Alegre
+arruda,ponto de parada,616.85,R. Monte Azul
 engenho do meio,cidade universitaria,921.66,R. Antônio Borges Uchoa
 engenho do meio,torroes,897.73,R. Alexandria
 engenho do meio,iputinga,2326.79,R. Alvaro Teixeira de Mesquita
@@ -140,6 +146,8 @@ passarinho,brejo de beberibe,2079.79,Av Canaa
 jardim sao paulo,areias,1986.12,R. José Natario
 jardim sao paulo,tejipio,1746.41,R. Prof Henrique de Lucena
 jardim sao paulo,estancia,1517.59,R. Sen Alberto Pasqualini
+jardim sao paulo,barro,2055.46,Av. Santo Antônio
+jardim sao paulo,jiquia,2185.47,R. Antônio Carneiro
 areias,barro,2236.34,R. Cap Alfredo Passos
 areias,estancia,1208.45,R. Dr Adelino Filho
 areias,jiquia,1421.21,R. Elizeu Cesar
@@ -154,6 +162,10 @@ bomba do hemeterio,alto jose do pinho,740.95,R. Arlindo Cisneiro
 bomba do hemeterio,alto santa terezinha,901.56,R. Airi
 bomba do hemeterio,agua fria,758.11,R. Antônio Meira
 mangabeira,alto jose do pinho,664.09,R. Aquiraz
+mangabeira,casa amarela,1579.29,R. Maragogi
+mangabeira,arruda,1410.33,R. Jacob
+mangabeira,tamarineira,679.1,R. da Mangabeira
+casa amarela,Nova Descoberta,2637.96,R. Vasco da Gama
 casa amarela,alto do mandu,1283.73,R. Coruripe
 casa amarela,morro da conceicao,775.2,R. Bugari
 casa amarela,alto jose do pinho,1052.78,R. Arnoldo Magalhães
@@ -175,6 +187,7 @@ ilha do retiro,afogados,1667.41,Pte dos Remedios
 mustardinha,afogados,1103.25,R. Adolfo Bezerra
 ibura,boa viagem,3355.14,R. Prof Aurélio de Castro Cavalcanti
 ibura,imbiribeira,2793.72,Av Pres Dutra
+ibura,areias,2765.22,R. Álvaro Frangoso
 alto jose bonifacio,morro da conceicao,718.43,R. Condor
 alto jose bonifacio,alto jose do pinho,1093.08,R. Corrego José Grande
 alto jose bonifacio,vasco da gama,722.86,R. Alto do Bambui
@@ -196,3 +209,21 @@ nova descoberta,corrego do jenipapo,988.43,R. Alvares Florense
 monteiro,apipucos,1224.8,R. de Apipucos
 imbiribeira,afogados,3055.85,R. Alvorada do Norte
 jiquia,afogados,1614.84,R. Belem de Maria
+sitio dos pintos,dois irmaos,1432.08,R. S D 7198
+sitio dos pintos,caxanga,1867.93,Est. dos Pintos
+cohab,jordao,2306.43,R. Rio Xingu
+cohab,barro,587.71,Av. Doze de Junho
+cohab,ibura,1913.60,Av. Dois Rios
+pau ferro,guabiraba,4098.86,Est. Mumbeca
+guabiraba,corrego do jenipapo,5230.74,R. Francisco Campos
+guabiraba,brejo da guabiraba,4413.79,R. Z
+guabiraba,passarinho,4387.98,Rod. Conselheiro Joao Campos
+cordeiro,santana,1708.2,R. Souza Bandeira
+cordeiro,engenho do meio,1834.13,R. Dr. Miguel Vieira Ferreira
+cordeiro,san martin,2136.91,R. Paes Cabral
+cordeiro,poco,1673.39,R. Jorge Gomes de Sa
+poco,iputinga,1426.67,R. Luiz Guimaraes
+ilha joana bezerra,sao jose,1439.57,R. Pref Jorge Martins
+cabanga,afogados,1848.24,Praca da Paz
+afogados,pina,2643.5,Pte. Governador Paulo Guerra
+brasilia teimosa, sao jose,2362.71, Av. Herculano Bandeira
