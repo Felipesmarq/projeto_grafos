@@ -1,0 +1,20 @@
+{
+    "origem": "nova descoberta",
+    "destino": "setubal (boa viagem)",
+    "custo": 14110.37,
+    "caminho": [
+        "nova descoberta",
+        "vasco da gama",
+        "morro da conceicao",
+        "alto jose do pinho",
+        "mangabeira",
+        "tamarineira",
+        "rosarinho",
+        "encruzilhada",
+        "torreao",
+        "santo amaro",
+        "recife",
+        "pina",
+        "boa viagem"
+    ]
+}

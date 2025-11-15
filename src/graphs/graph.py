@@ -1,3 +1,5 @@
+import heapq
+
 class Graph:
     def __init__(self):
         self.adj_list = {}
@@ -70,3 +72,39 @@ class Graph:
 
     def degree(self, node):
         return len(self.get_neighbors(node))
+    
+    def dijkstra(self, origem, destino):
+
+        dist = {n: float("inf") for n in self.nodes}
+        dist[origem] = 0
+
+        anterior = {n: None for n in self.nodes}
+
+        heap = [(0, origem)]
+
+        while heap:
+            atual_dist, atual = heapq.heappop(heap)
+
+            if atual == destino:
+                break
+
+            if atual_dist > dist[atual]:
+                continue
+
+            for viz, peso in self.adj_list[atual]:
+                novo_custo = atual_dist + peso
+
+                if novo_custo < dist[viz]:
+                    dist[viz] = novo_custo
+                    anterior[viz] = atual
+                    heapq.heappush(heap, (novo_custo, viz))
+
+        caminho = []
+        node = destino
+        while node is not None:
+            caminho.append(node)
+            node = anterior[node]
+
+        caminho.reverse()
+
+        return dist[destino], caminho

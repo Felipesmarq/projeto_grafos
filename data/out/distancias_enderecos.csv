@@ -1,0 +1,6 @@
+X,Y,bairro_X,bairro_Y,custo,caminho
+"Rua Nova Descoberta, 1450","Rua Baltazar Passos, Setúbal",nova descoberta,boa viagem,14110.37,nova descoberta -> vasco da gama -> morro da conceicao -> alto jose do pinho -> mangabeira -> tamarineira -> rosarinho -> encruzilhada -> torreao -> santo amaro -> recife -> pina -> boa viagem
+"Rua Benfica, Madalena","Rua Capitão Lima, Santo Amaro",madalena,santo amaro,3677.67,madalena -> gracas -> espinheiro -> santo amaro
+"Rua Real da Torre, Várzea","Rua do Futuro, Graças",varzea,gracas,8812.71,varzea -> cidade universitaria -> engenho do meio -> cordeiro -> torre -> gracas
+"Av Caxangá, Cordeiro","Av Boa Viagem, Boa Viagem",cordeiro,boa viagem,9110.75,cordeiro -> san martin -> estancia -> jiquia -> imbiribeira -> boa viagem
+Ponte do Pina,Rua da Aurora,pina,boa vista,4277.0199999999995,pina -> recife -> santo amaro -> boa vista
