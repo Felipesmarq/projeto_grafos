@@ -1,4 +1,99 @@
 from collections import deque
+import heapq
+
+def dijkstra(grafo, origem, destino):
+
+    dist = {n: float("inf") for n in grafo.nodes}
+    dist[origem] = 0
+
+    anterior = {n: None for n in grafo.nodes}
+    heap = [(0, origem)]
+
+    while heap:
+        atual_dist, atual = heapq.heappop(heap)
+
+        if atual == destino:
+            break
+        if atual_dist > dist[atual]:
+            continue
+
+        for viz, peso in grafo.adj_list[atual]:
+
+            peso_transformado = 10 - peso # invertendo os pesos para aceitar pesos negativos
+
+            novo_custo = atual_dist + peso_transformado
+
+            if novo_custo < dist[viz]:
+                dist[viz] = novo_custo
+                anterior[viz] = atual
+                heapq.heappush(heap, (novo_custo, viz))
+
+    caminho = []
+    node = destino
+    while node is not None:
+        caminho.append(node)
+        node = anterior[node]
+
+    caminho.reverse()
+
+    return dist[destino], caminho
+
+
+def bellman_ford(grafo, origem, destino):
+
+    dist = {n: float("inf") for n in grafo.nodes}
+    dist[origem] = 0
+
+    anterior = {n: None for n in grafo.nodes}
+
+    for _ in range(len(grafo.nodes) - 1):
+        trocou = False
+        
+        for atual in grafo.nodes:
+            if dist[atual] == float("inf"):
+                continue
+
+            for viz, peso in grafo.adj_list[atual]:
+                
+                novo_custo = dist[atual] + peso 
+
+                if novo_custo < dist[viz]:
+                    dist[viz] = novo_custo
+                    anterior[viz] = atual
+                    trocou = True
+        
+        if not trocou:
+            break
+
+    tem_ciclo_negativo = False
+    for atual in grafo.nodes:
+        if dist[atual] == float("inf"):
+            continue
+        for viz, peso in grafo.adj_list[atual]:
+            if dist[atual] + peso < dist[viz]:
+                tem_ciclo_negativo = True
+                break
+        if tem_ciclo_negativo:
+            break
+
+    if tem_ciclo_negativo:
+        print("Erro: Ciclo negativo detectado!") 
+        return float("-inf"), []
+
+    caminho = []
+    node = destino
+    
+    if dist[destino] == float("inf"):
+        return float("inf"), [] # Destino inalcançável
+
+    while node is not None:
+        caminho.append(node)
+        node = anterior[node]
+
+    caminho.reverse()
+
+    return dist[destino], caminho
+
 
 def bfs(grafo, origem):
     visitado = set()
@@ -39,7 +134,6 @@ def dfs(grafo, origem):
 # ===============================================================
 
 def bfs_multisource(grafo, fontes):
-    from collections import deque
 
     visitado = set()
     fila = deque()
