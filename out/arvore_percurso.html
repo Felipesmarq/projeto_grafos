@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Árvore do percurso: Nova Descoberta → Boa Viagem (Setúbal)</title>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            }
+            #network {
+                width: 100%;
+                height: 100vh;
+                border-top: 1px solid #eee;
+            }
+            .title-container {
+                padding: 12px 16px;
+                background: #fafafa;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            .title-container h1 {
+                margin: 0;
+                font-size: 18px;
+            }
+            .title-container p {
+                margin: 4px 0 0 0;
+                font-size: 13px;
+                color: #666;
+            }
+        </style>
+        <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    </head>
+    <body>
+        <div class="title-container">
+            <h1>Árvore do percurso: Nova Descoberta → Boa Viagem (Setúbal)</h1>
+            <p>Cada nó é um bairro; as arestas em vermelho representam o percurso mínimo encontrado.</p>
+        </div>
+        <div id="network"></div>
+
+        <script>
+            const route = [
+                "Nova Descoberta",
+                "Vasco da Gama",
+                "Morro da Conceição",
+                "Alto José do Pinho",
+                "Mangabeira",
+                "Tamarineira",
+                "Rosarinho",
+                "Encruzilhada",
+                "Torreão",
+                "Santo Amaro",
+                "Recife",
+                "Pina",
+                "Boa Viagem (Setúbal)"
+            ];
+
+            const nodes = new vis.DataSet(
+                route.map((bairro, idx) => ({
+                    id: idx,
+                    label: bairro,
+                    title: bairro,
+                    shape: "dot",
+                    size: idx === 0 || idx === route.length - 1 ? 20 : 16,
+                    color: idx === 0
+                        ? { background: "#1e88e5", border: "#0d47a1" }       
+                        : idx === route.length - 1
+                            ? { background: "#43a047", border: "#1b5e20" }        
+                        : { background: "#90caf9", border: "#1565c0" }        
+                }))
+            );
+
+            const edges = new vis.DataSet(
+                route.slice(0, -1).map((_, idx) => ({
+                    from: idx,
+                    to: idx + 1,
+                    width: 4,
+                    color: { color: "#e53935" },
+                    arrows: {
+                        to: {
+                            enabled: false
+                        }
+                    },
+                    smooth: {
+                        enabled: true,
+                        type: "continuous"
+                    }
+                }))
+            );
+
+            const container = document.getElementById("network");
+            const data = { nodes, edges };
+
+            const options = {
+                layout: {
+                    hierarchical: {
+                        direction: "LR",
+                        sortMethod: "directed",
+                        nodeSpacing: 160,
+                        levelSeparation: 140
+                    }
+                },
+                physics: false,
+                interaction: {
+                    dragNodes: true,
+                    dragView: true,
+                    zoomView: true,
+                    hover: true
+                },
+                nodes: {
+                    font: {
+                        size: 14
+                    }
+                },
+                edges: {
+                    selectionWidth: 6,
+                    hoverWidth: 6
+                }
+            };
+
+            const network = new vis.Network(container, data, options);
+
+            network.once("afterDrawing", function () {
+                network.fit({
+                    animation: {
+                        duration: 800,
+                        easingFunction: "easeInOutQuad"
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
