@@ -1,4 +1,5 @@
-from .graphs.io import carregar_grafo
+from .graphs.io import carregar_grafo, carregar_grafo2
+from .distancias import calcular_distancias
 import pandas as pd
 
 def main():
@@ -51,6 +52,10 @@ def main():
     graus = [{"bairro": n, "grau": grafo.degree(n)} for n in grafo.get_nodes()]
     df_graus = pd.DataFrame(graus)
     df_graus.to_csv("data/out/graus.csv", index=False)
+
+    calcular_distancias(grafo)
+
+    btc_grafo = carregar_grafo2()
 
 if __name__ == "__main__":
     main()

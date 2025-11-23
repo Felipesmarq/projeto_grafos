@@ -2,8 +2,7 @@ import pandas as pd
 import json
 from .graphs.io import carregar_grafo
 
-def calcular_distancias():
-    grafo = carregar_grafo()
+def calcular_distancias(grafo):
 
     df = pd.read_csv("data/enderecos.csv")
 
@@ -36,7 +35,6 @@ def calcular_distancias():
             "caminho": caminho
         }, f, indent=4, ensure_ascii=False)
 
-    print("Arquivos gerados com sucesso!")
 
 
 if __name__ == "__main__":

@@ -5,17 +5,15 @@ class Graph:
         self.adj_list = {}
         self.nodes = {}
 
-    def add_node(self, node_name, microrregiao):
+    def add_node(self, node_name, microrregiao=None):
         if node_name not in self.adj_list:
             self.adj_list[node_name] = []
             self.nodes[node_name] = {'microrregiao': microrregiao}
-            print(f"[Grafo] Nó adicionado: {node_name} (Micro: {microrregiao})")
 
     def add_edge(self, node1, node2, peso):
         if node1 in self.adj_list and node2 in self.adj_list:
             self.adj_list[node1].append((node2, peso))
             self.adj_list[node2].append((node1, peso))
-            print(f"[Grafo] Aresta: {node1} <-> {node2} (Peso: {peso})")
         else:
             print(f"[Erro] Nó {node1} ou {node2} não existe.")
 
