@@ -23,11 +23,11 @@ def calcular_distancias(grafo):
             "caminho": " -> ".join(caminho)
         })
 
-    pd.DataFrame(resultados).to_csv("data/out/distancias_enderecos.csv", index=False)
+    pd.DataFrame(resultados).to_csv("out/distancias_enderecos.csv", index=False)
 
     custo, caminho = grafo.dijkstra("nova descoberta", "boa viagem")
 
-    with open("data/out/percurso_nova_descoberta_setubal.json", "w", encoding="utf-8") as f:
+    with open("out/percurso_nova_descoberta_setubal.json", "w", encoding="utf-8") as f:
         json.dump({
             "origem": "nova descoberta",
             "destino": "setubal (boa viagem)",

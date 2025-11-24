@@ -16,7 +16,7 @@ def main():
             })
 
     df_recife = pd.DataFrame(recife)
-    df_recife.to_json("data/out/recife.json", index=False)
+    df_recife.to_json("out/recife.json", index=False)
     
 
     micros = set(attr['microrregiao'] for attr in grafo.nodes.values())
@@ -32,7 +32,7 @@ def main():
         })
 
     df_micro = pd.DataFrame(micro_results)
-    df_micro.to_json("data/out/microrregioes.json", index=False)
+    df_micro.to_json("out/microrregioes.json", index=False)
 
     ego_results = []
     for bairro in grafo.get_nodes():
@@ -47,11 +47,11 @@ def main():
             })
 
     df_ego = pd.DataFrame(ego_results)
-    df_ego.to_csv("data/out/ego_bairro.csv", index=False)
+    df_ego.to_csv("out/ego_bairro.csv", index=False)
 
     graus = [{"bairro": n, "grau": grafo.degree(n)} for n in grafo.get_nodes()]
     df_graus = pd.DataFrame(graus)
-    df_graus.to_csv("data/out/graus.csv", index=False)
+    df_graus.to_csv("out/graus.csv", index=False)
 
     calcular_distancias(grafo)
 
