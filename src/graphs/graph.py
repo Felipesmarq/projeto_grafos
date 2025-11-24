@@ -1,9 +1,10 @@
 import heapq
 
 class Graph:
-    def __init__(self):
+    def __init__(self, directed=False):
         self.adj_list = {}
         self.nodes = {}
+        self.directed = directed 
 
     def add_node(self, node_name, microrregiao=None):
         if node_name not in self.adj_list:
@@ -13,7 +14,9 @@ class Graph:
     def add_edge(self, node1, node2, peso):
         if node1 in self.adj_list and node2 in self.adj_list:
             self.adj_list[node1].append((node2, peso))
-            self.adj_list[node2].append((node1, peso))
+            
+            if not self.directed:
+                self.adj_list[node2].append((node1, peso))
         else:
             print(f"[Erro] Nó {node1} ou {node2} não existe.")
 
@@ -31,6 +34,8 @@ class Graph:
 
     def get_size(self):
         total_edges = sum(len(neighbors) for neighbors in self.adj_list.values())
+        if self.directed:
+            return total_edges
         return total_edges // 2
     
     def get_density(self):
@@ -38,11 +43,14 @@ class Graph:
         m = self.get_size()
         if n < 2:
             return 0
+        if self.directed:
+            return m / (n * (n - 1))
         return (2 * m) / (n * (n - 1))
     
     def subgraph_from_nodes(self, nodes_subset):
         """ Retorna um novo grafo apenas com os nós do subset e arestas entre eles """
-        sg = Graph()
+        sg = Graph(directed=self.directed)
+        
         for n in nodes_subset:
             meta = self.get_node_attributes(n)
             if meta:

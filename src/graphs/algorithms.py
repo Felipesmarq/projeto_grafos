@@ -2,31 +2,33 @@ from collections import deque
 import heapq
 
 def dijkstra(grafo, origem, destino):
-
-    dist = {n: float("inf") for n in grafo.nodes}
+    dist = {n: float("inf") for n in grafo.get_nodes()}
     dist[origem] = 0
 
-    anterior = {n: None for n in grafo.nodes}
+    anterior = {n: None for n in grafo.get_nodes()}
     heap = [(0, origem)]
 
     while heap:
         atual_dist, atual = heapq.heappop(heap)
 
         if atual == destino:
-            break
+            break     
         if atual_dist > dist[atual]:
             continue
 
-        for viz, peso in grafo.adj_list[atual]:
-
-            peso_transformado = 10 - peso # invertendo os pesos para aceitar pesos negativos
-
-            novo_custo = atual_dist + peso_transformado
+        for viz, peso in grafo.adj_list.get(atual, []):
+            if peso < 0:
+                raise ValueError("Dijkstra não aceita arestas com peso negativo.")
+            
+            novo_custo = atual_dist + peso
 
             if novo_custo < dist[viz]:
                 dist[viz] = novo_custo
                 anterior[viz] = atual
                 heapq.heappush(heap, (novo_custo, viz))
+
+    if dist[destino] == float("inf"):
+        return float("inf"), []
 
     caminho = []
     node = destino
@@ -41,15 +43,15 @@ def dijkstra(grafo, origem, destino):
 
 def bellman_ford(grafo, origem, destino):
 
-    dist = {n: float("inf") for n in grafo.nodes}
+    dist = {n: float("inf") for n in grafo.get_nodes()}
     dist[origem] = 0
 
-    anterior = {n: None for n in grafo.nodes}
+    anterior = {n: None for n in grafo.get_nodes()}
 
-    for _ in range(len(grafo.nodes) - 1):
+    for _ in range(len(grafo.get_nodes()) - 1):
         trocou = False
         
-        for atual in grafo.nodes:
+        for atual in grafo.get_nodes():
             if dist[atual] == float("inf"):
                 continue
 
@@ -66,7 +68,7 @@ def bellman_ford(grafo, origem, destino):
             break
 
     tem_ciclo_negativo = False
-    for atual in grafo.nodes:
+    for atual in grafo.get_nodes():
         if dist[atual] == float("inf"):
             continue
         for viz, peso in grafo.adj_list[atual]:
@@ -96,37 +98,52 @@ def bellman_ford(grafo, origem, destino):
 
 
 def bfs(grafo, origem):
-    visitado = set()
+    levels = {}
+    levels[origem] = 0
+    
     fila = deque([origem])
-    ordem = []
-
-    visitado.add(origem)
 
     while fila:
         atual = fila.popleft()
-        ordem.append(atual)
 
-        for viz in grafo.adj[atual]:
-            if viz not in visitado:
-                visitado.add(viz)
+        for viz, _ in grafo.adj_list.get(atual, []):
+            if viz not in levels:
+                levels[viz] = levels[atual] + 1
                 fila.append(viz)
-
-    return ordem
+                
+    return levels
 
 def dfs(grafo, origem):
-    visitado = set()
-    ordem = []
-
-    def explorar(no):
-        visitado.add(no)
-        ordem.append(no)
-
-        for viz in grafo.adj[no]:
-            if viz not in visitado:
-                explorar(viz)
-
-    explorar(origem)
-    return ordem
+    visited = set()         
+    recursion_stack = set() 
+    
+    classified_edges = []
+    has_cycle = False
+    
+    def dfs_visit(u):
+        nonlocal has_cycle
+        
+        visited.add(u)
+        recursion_stack.add(u)
+        
+        for v, _ in grafo.adj_list.get(u, []):
+            if v not in visited:
+                classified_edges.append(('tree', u, v))
+                dfs_visit(v)
+            elif v in recursion_stack:
+                classified_edges.append(('back', u, v))
+                has_cycle = True
+            else:
+                classified_edges.append(('forward/cross', u, v))
+        recursion_stack.remove(u)
+    nodes = grafo.get_nodes()
+    if origem in nodes:
+        dfs_visit(origem)
+            
+    return {
+        'edges': classified_edges,
+        'has_cycle': has_cycle
+    }
 
 # ===============================================================
 # BFS a partir de múltiplas fontes (≥ 3)
@@ -150,7 +167,7 @@ def bfs_multisource(grafo, fontes):
         atual = fila.popleft()
         ordem.append(atual)
 
-        for viz in grafo.adj[atual]:
+        for viz, _ in grafo.adj_list[atual]:
             if viz not in visitado:
                 visitado.add(viz)
                 camada[viz] = camada[atual] + 1
@@ -161,7 +178,6 @@ def bfs_multisource(grafo, fontes):
                     ciclos.append((atual, viz))
 
     return ordem, camada, ciclos
-
 
 # ===============================================================
 # DFS a partir de múltiplas fontes (≥ 3)
@@ -179,7 +195,7 @@ def dfs_multisource(grafo, fontes):
         ordem.append(no)
         profundidade[no] = prof
 
-        for viz in grafo.adj[no]:
+        for viz, _ in grafo.adj_list[no]:
             if viz not in visitado:
                 explorar(viz, prof + 1)
             else:
@@ -191,4 +207,3 @@ def dfs_multisource(grafo, fontes):
             explorar(f, 0)
 
     return ordem, profundidade, ciclos
-
