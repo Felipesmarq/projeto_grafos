@@ -12,7 +12,7 @@ def dijkstra(grafo, origem, destino):
         atual_dist, atual = heapq.heappop(heap)
 
         if atual == destino:
-            break     
+            break
         if atual_dist > dist[atual]:
             continue
 
@@ -57,7 +57,7 @@ def bellman_ford(grafo, origem, destino):
 
             for viz, peso in grafo.adj_list[atual]:
                 
-                novo_custo = dist[atual] + peso 
+                novo_custo = dist[atual] + peso
 
                 if novo_custo < dist[viz]:
                     dist[viz] = novo_custo
@@ -79,7 +79,7 @@ def bellman_ford(grafo, origem, destino):
             break
 
     if tem_ciclo_negativo:
-        print("Erro: Ciclo negativo detectado!") 
+        print("Erro: Ciclo negativo detectado!")
         return float("-inf"), []
 
     caminho = []
@@ -114,8 +114,8 @@ def bfs(grafo, origem):
     return levels
 
 def dfs(grafo, origem):
-    visited = set()         
-    recursion_stack = set() 
+    visited = set()
+    recursion_stack = set()
     
     classified_edges = []
     has_cycle = False
@@ -173,7 +173,6 @@ def bfs_multisource(grafo, fontes):
                 camada[viz] = camada[atual] + 1
                 fila.append(viz)
             else:
-                # Detecta ciclo (quando viz já visitado não é o pai direto)
                 if camada[viz] <= camada[atual]:
                     ciclos.append((atual, viz))
 

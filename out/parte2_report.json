@@ -1,0 +1,44 @@
+[
+    {
+        "algoritmo": "Dijkstra",
+        "tempo_segundos": 0.004060099832713604,
+        "memoria_atual_bytes": 2344,
+        "memoria_pico_bytes": 488816,
+        "resultado": "(inf, [])"
+    },
+    {
+        "algoritmo": "Bellman-Ford",
+        "tempo_segundos": 0.010585200041532516,
+        "memoria_atual_bytes": 328,
+        "memoria_pico_bytes": 486632,
+        "resultado": "(inf, [])"
+    },
+    {
+        "algoritmo": "BFS",
+        "tempo_segundos": 2.8799986466765404e-05,
+        "memoria_atual_bytes": 160,
+        "memoria_pico_bytes": 976,
+        "resultado": "{245: 0}"
+    },
+    {
+        "algoritmo": "DFS",
+        "tempo_segundos": 0.0003418000414967537,
+        "memoria_atual_bytes": 888,
+        "memoria_pico_bytes": 30984,
+        "resultado": "{'edges': [], 'has_cycle': False}"
+    },
+    {
+        "algoritmo": "BFS Multisource",
+        "tempo_segundos": 1.8900027498602867e-05,
+        "memoria_atual_bytes": 192,
+        "memoria_pico_bytes": 1216,
+        "resultado": "([464, 24, 98], {464: 0, 24: 0, 98: 0}, [])"
+    },
+    {
+        "algoritmo": "DFS Multisource",
+        "tempo_segundos": 1.559988595545292e-05,
+        "memoria_atual_bytes": 808,
+        "memoria_pico_bytes": 904,
+        "resultado": "([464, 24, 98], {464: 0, 24: 0, 98: 0}, [])"
+    }
+]
