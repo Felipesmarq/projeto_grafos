@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Grafo Parcial Entrega 2</title>
+
+    <style>
+        body { background: #111; color: white; font-family: Arial; }
+        #graph {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #444;
+            background: #1a1a1a;
+        }
+    </style>
+
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+
+<body>
+    <h2>Grafo Parcial Bitcoin</h2>
+
+    <div id="graph"></div>
+
+    <script>
+
+        var edges = new vis.DataSet([
+            { from: 23966, to: 7372, label: "1" },
+            { from: 23967, to: 2493, label: "1" },
+            { from: 23968, to: 2536, label: "1" },
+            { from: 23969, to: 2536, label: "1" },
+            { from: 23970, to: 2607, label: "1" },
+            { from: 23971, to: 2607, label: "1" },
+            { from: 23972, to: 2652, label: "1" },
+            { from: 23973, to: 2652, label: "1" },
+            { from: 23974, to: 7564, label: "1" },
+            { from: 23975, to: 2748, label: "1" },
+            { from: 23976, to: 2748, label: "5" },
+            { from: 23977, to: 7403, label: "-10" },
+            { from: 23978, to: 2788, label: "1" },
+            { from: 23979, to: 2789, label: "1" },
+            { from: 23980, to: 7603, label: "1" },
+            { from: 23981, to: 2794, label: "1" },
+            { from: 23982, to: 2811, label: "1" },
+            { from: 23983, to: 4934, label: "1" },
+            { from: 23984, to: 2828, label: "1" },
+            { from: 23985, to: 7603, label: "1" },
+            { from: 23986, to: 7442, label: "-5" },
+            { from: 23987, to: 2900, label: "1" },
+            { from: 23988, to: 7411, label: "1" },
+            { from: 23989, to: 2975, label: "1" },
+            { from: 23990, to: 7594, label: "-10" },
+            { from: 23991, to: 7565, label: "1" },
+            { from: 23992, to: 3074, label: "1" },
+            { from: 23993, to: 3079, label: "1" },
+            { from: 23994, to: 7595, label: "1" },
+            { from: 23995, to: 3095, label: "1" },
+            { from: 23996, to: 7389, label: "-10" },
+            { from: 23997, to: 7415, label: "1" },
+            { from: 23998, to: 3129, label: "1" },
+            { from: 23999, to: 7514, label: "1" },
+            { from: 24000, to: 3136, label: "1" },
+            { from: 24001, to: 3138, label: "1" },
+            { from: 24002, to: 7595, label: "2" },
+            { from: 24003, to: 7327, label: "-10" },
+            { from: 24004, to: 3217, label: "1" },
+            { from: 24005, to: 3197, label: "1" },
+            { from: 24006, to: 7390, label: "1" },
+            { from: 24007, to: 3227, label: "1" },
+            { from: 24008, to: 3228, label: "1" },
+            { from: 24009, to: 7436, label: "-10" },
+            { from: 24010, to: 3296, label: "1" },
+            { from: 24011, to: 3314, label: "1" },
+            { from: 24012, to: 7412, label: "1" },
+            { from: 24013, to: 3394, label: "1" },
+            { from: 24014, to: 7591, label: "1" },
+            { from: 24015, to: 3774, label: "8" },
+            { from: 24016, to: 7561, label: "2" },
+            { from: 24017, to: 4910, label: "10" },
+            { from: 24018, to: 4934, label: "-5" },
+            { from: 24019, to: 7564, label: "-10" },
+            { from: 24020, to: 5342, label: "-10" },
+            { from: 24021, to: 5342, label: "-10" },
+            { from: 24022, to: 5342, label: "-10" },
+            { from: 24023, to: 5342, label: "-10" },
+            { from: 24024, to: 5342, label: "-10" },
+            { from: 24025, to: 7482, label: "-3" },
+            { from: 24026, to: 7500, label: "-3" },
+            { from: 24027, to: 7584, label: "-4" },
+            { from: 24028, to: 7392, label: "-5" },
+            { from: 24029, to: 7405, label: "-5" },
+            { from: 24030, to: 7407, label: "-5" },
+            { from: 24031, to: 7556, label: "-5" },
+            { from: 24032, to: 7509, label: "-8" },
+            { from: 24033, to: 7418, label: "-8" },
+            { from: 24034, to: 7595, label: "-8" },
+            { from: 24035, to: 7530, label: "-10" },
+            { from: 24036, to: 7581, label: "-10" },
+            { from: 24037, to: 7551, label: "-10" },
+            { from: 24038, to: 7594, label: "-10" },
+            { from: 24039, to: 7430, label: "-10" },
+            { from: 24040, to: 5389, label: "-10" },
+            { from: 24041, to: 7600, label: "-10" },
+            { from: 24042, to: 7427, label: "-10" },
+            { from: 24043, to: 7538, label: "-10" },
+            { from: 24044, to: 7373, label: "-10" },
+            { from: 24045, to: 7586, label: "-10" },
+            { from: 24046, to: 7590, label: "-10" },
+            { from: 24047, to: 7565, label: "-10" },
+            { from: 24048, to: 7588, label: "-10" },
+            { from: 24049, to: 5389, label: "5" },
+            { from: 24050, to: 7429, label: "2" },
+            { from: 24051, to: 5533, label: "10" },
+            { from: 24052, to: 5533, label: "10" },
+            { from: 24053, to: 5533, label: "10" },
+            { from: 24054, to: 7565, label: "10" },
+            { from: 24055, to: 7517, label: "5" },
+            { from: 24056, to: 5679, label: "2" },
+            { from: 24057, to: 7595, label: "1" },
+            { from: 24058, to: 7465, label: "-10" },
+            { from: 24059, to: 7444, label: "-5" },
+            { from: 24060, to: 7328, label: "4" },
+            { from: 24061, to: 7328, label: "-10" },
+            { from: 24062, to: 7440, label: "1" },
+            { from: 24063, to: 7564, label: "-10" },
+            { from: 24064, to: 7334, label: "10" }
+        ]);
+
+        // ===================================
+        // GERA OS NÓS AUTOMATICAMENTE
+        // ===================================
+        var nodes = new vis.DataSet([]);
+
+        edges.forEach(e => {
+            if (!nodes.get(e.from)) nodes.add({ id: e.from, label: String(e.from) });
+            if (!nodes.get(e.to)) nodes.add({ id: e.to, label: String(e.to) });
+        });
+
+        // ===================================
+        // CRIA O GRAFO
+        // ===================================
+        var container = document.getElementById("graph");
+        var data = { nodes: nodes, edges: edges };
+
+        var options = {
+            nodes: {
+                shape: "dot",
+                size: 10,
+                color: "#4cc9f0"
+            },
+            edges: {
+                arrows: "to",
+                color: "#aaa",
+                font: { color: "white", size: 14 }
+            },
+            physics: {
+                enabled: true,
+                stabilization: false
+            }
+        };
+
+        new vis.Network(container, data, options);
+    </script>
+
+</body>
+</html>
