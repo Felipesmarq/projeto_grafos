@@ -4,7 +4,7 @@ from .graph import Graph
 def carregar_grafo(path_nodes='data/bairros_unique.csv',
                    path_edges='data/adjacencias_bairros.csv'):
 
-    g = Graph()
+    g = Graph(False)
 
     try:
         df_nodes = pd.read_csv(path_nodes)
@@ -52,7 +52,7 @@ def carregar_grafo(path_nodes='data/bairros_unique.csv',
 
 def carregar_grafo2(path_nodes='data/nodes.csv', path_edges='data/bitcoinGraph.csv'):
     
-    btc_g = Graph()
+    btc_g = Graph(True)
 
     try:
         df_nodes = pd.read_csv(path_nodes)

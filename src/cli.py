@@ -39,7 +39,7 @@ def gerar_relatorio_parte2(grafo):
     resultados = []
 
     origem = 1
-    destino = 2
+    destino = 5
     fontes_multisource = [464, 24, 98]
 
     print("Executando Bellman-Ford...")

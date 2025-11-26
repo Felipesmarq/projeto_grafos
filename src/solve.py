@@ -1,6 +1,7 @@
 from .graphs.io import carregar_grafo, carregar_grafo2
 from .distancias import calcular_distancias
 import pandas as pd
+from cli import gerar_relatorio_parte2
 
 def main():
     print("--- Iniciando Projeto de Grafos (Carregamento) ---")
@@ -55,7 +56,10 @@ def main():
 
     calcular_distancias(grafo)
 
+    print("\n--- Iniciando Projeto de Grafos (Relatório Parte 2) ---")
     btc_grafo = carregar_grafo2()
+    gerar_relatorio_parte2(btc_grafo)
+
 
 if __name__ == "__main__":
     main()
