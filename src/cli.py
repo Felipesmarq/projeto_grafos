@@ -38,18 +38,9 @@ def gerar_relatorio_parte2(grafo):
 
     resultados = []
 
-    origem = 245
-    destino = 1
-    fontes_multisource = [464, 24,98]
-
-    print("\nExecutando Dijkstra...")
-    resultados.append(medir_algoritmo(
-        "Dijkstra",
-        algorithms.dijkstra,
-        grafo,
-        origem,
-        destino
-    ))
+    origem = 1
+    destino = 2
+    fontes_multisource = [464, 24, 98]
 
     print("Executando Bellman-Ford...")
     resultados.append(medir_algoritmo(
@@ -91,6 +82,15 @@ def gerar_relatorio_parte2(grafo):
         grafo,
         fontes_multisource
     ))
+
+    #print("\nExecutando Dijkstra...")
+    #resultados.append(medir_algoritmo(
+    #    "Dijkstra",
+    #    algorithms.dijkstra,
+     #   grafo,
+    #    origem,
+    #    destino
+    #))
 
     # Salva o JSON
     with open("out/parte2_report.json", "w", encoding="utf-8") as f:

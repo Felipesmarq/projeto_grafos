@@ -12,13 +12,16 @@ class Graph:
             self.nodes[node_name] = {'microrregiao': microrregiao}
 
     def add_edge(self, node1, node2, peso):
-        if node1 in self.adj_list and node2 in self.adj_list:
-            self.adj_list[node1].append((node2, peso))
-            
-            if not self.directed:
-                self.adj_list[node2].append((node1, peso))
-        else:
-            print(f"[Erro] Nó {node1} ou {node2} não existe.")
+
+        if node1 not in self.adj_list:
+            self.add_node(node1)
+        if node2 not in self.adj_list:
+            self.add_node(node2)
+
+        self.adj_list[node1].append((node2, peso))
+
+        if not self.directed:
+            self.adj_list[node2].append((node1, peso))
 
     def get_nodes(self):
         return list(self.nodes.keys())

@@ -52,17 +52,17 @@ def carregar_grafo(path_nodes='data/bairros_unique.csv',
 
 def carregar_grafo2(path_nodes='data/nodes.csv', path_edges='data/bitcoinGraph.csv'):
     
-    g = Graph()
+    btc_g = Graph()
 
     try:
         df_nodes = pd.read_csv(path_nodes)
         
         for _, row in df_nodes.iterrows():
-            node_id = row['node_id'] 
+            node_id = int(row['node_id'])
 
-            g.add_node(node_name=node_id, microrregiao=None)
+            btc_g.add_node(node_name=node_id)
             
-        print(f"--- Nós carregados: {len(g.nodes)} usuários lidos de '{path_nodes}'")
+        print(f"--- Nós carregados: {len(btc_g.nodes)} usuários lidos de '{path_nodes}'")
         
     except FileNotFoundError:
         print(f"Erro: Arquivo de nós não encontrado em '{path_nodes}'")
@@ -75,27 +75,24 @@ def carregar_grafo2(path_nodes='data/nodes.csv', path_edges='data/bitcoinGraph.c
         df_edges = pd.read_csv(path_edges)
         erros = []
 
-        for idx, row in df_edges.iterrows():
-            try:
-                peso = float(row['rating']) 
-                
-                g.add_edge(
-                    node1=row['source'],
-                    node2=row['target'],
-                    peso=peso
-                )
+        for _, row in df_edges.iterrows():
+            source = int(row['SOURCE'])
+            target = int(row['TARGET'])
+            rate = float(row['RATE'])
 
-            except Exception as e:
-                erros.append((idx + 2, row.to_dict(), str(e)))
+            # Garante que todos os nós do CSV de edges existam no grafo
+            if source not in btc_g.nodes:
+                btc_g.add_node(source)
+            if target not in btc_g.nodes:
+                btc_g.add_node(target)
 
-        num_edges = len(g.adj_list) if hasattr(g, 'adj_list') else "N/A" 
+            btc_g.add_edge(source, target, rate)
+
+        num_edges = len(btc_g.adj_list) if hasattr(btc_g, 'adj_list') else "N/A" 
         print(f"--- Arestas processadas de '{path_edges}'")
 
     except FileNotFoundError:
         print(f"Aviso: Arquivo de arestas '{path_edges}' não encontrado.")
         return None
-    except KeyError:
-        print("Erro: O CSV de arestas deve ter as colunas 'source', 'target' e 'rating'.")
-        return None
 
-    return g
+    return btc_g
