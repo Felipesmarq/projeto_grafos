@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Grafo Interativo – Bairros do Recife</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #020617;
+      color: #e5e7eb;
+    }
+    header {
+      padding: 20px 28px 8px 28px;
+      border-bottom: 1px solid #1f2937;
+      background: radial-gradient(circle at top left, #0b1120, #020617);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .subtitle {
+      margin-top: 4px;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+    main {
+      padding: 18px 28px 24px 28px;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .toolbar label {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+    .toolbar input[type="text"] {
+      background: #020617;
+      color: #e5e7eb;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      padding: 4px 12px;
+      font-size: 12px;
+      outline: none;
+      min-width: 220px;
+    }
+    .toolbar button {
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-size: 11px;
+      padding: 5px 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toolbar button span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #1850ed;
+      display: inline-block;
+    }
+    .toolbar button.active {
+      border-color: #1850ed;
+      box-shadow: 0 0 0 1px rgba(249,115,22,0.4);
+    }
+    .pill {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      background: #020617;
+      color: #9ca3af;
+    }
+    #graph {
+      width: 100%;
+      height: 640px;
+    }
+    .legend-mic {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+    .legend-mic span.badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0 8px;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      margin-right: 4px;
+      margin-bottom: 4px;
+      background: #020617;
+    }
+    .legend-mic span.badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+    .meta {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Grafo Interativo – Bairros do Recife</h1>
+    <div class="subtitle">
+      Cada nó é um bairro; as arestas representam interconexões reais por logradouros. Explore graus, microrregiões e o percurso mínimo entre Nova Descoberta e Boa Viagem (Setúbal).
+    </div>
+  </header>
+  <main>
+    <div class="toolbar">
+      <span class="pill">Apresentação interativa</span>
+      <label for="searchInput">Buscar bairro:</label>
+      <input id="searchInput" type="text" placeholder="Digite parte do nome do bairro..." />
+      <button id="togglePathBtn">
+        <span class="dot"></span>
+        Realçar caminho Nova Descoberta → Boa Viagem (Setúbal)
+      </button>
+    </div>
+    <div id="graph"></div>
+    <div class="legend-mic" id="micLegend"></div>
+    <div class="meta">
+      • Passe o mouse sobre um bairro para ver grau total de interconexões, microrregião e densidade da ego-subrede.<br/>
+      • Use a busca para destacar um bairro específico e seus vizinhos.<br/>
+      • Use o botão de destaque para enxergar rapidamente o caminho calculado por Dijkstra entre Nova Descoberta e Boa Viagem (Setúbal).
+    </div>
+  </main>
+
+<script>
+  const bairros = ["aflitos", "afogados", "agua fria", "alto do mandu", "alto jose bonifacio", "alto jose do pinho", "alto santa terezinha", "apipucos", "areias", "arruda", "barro", "beberibe", "boa viagem", "boa vista", "bomba do hemeterio", "bongi", "brasilia teimosa", "brejo da guabiraba", "brejo de beberibe", "cabanga", "cacote", "cajueiro", "campina do barreto", "campo grande", "casa amarela", "casa forte", "caxanga", "cidade universitaria", "coelhos", "cohab", "coqueiral", "cordeiro", "corrego do jenipapo", "curado", "derby", "dois irmaos", "dois unidos", "encruzilhada", "engenho do meio", "espinheiro", "estancia", "fundao", "gracas", "guabiraba", "hipodromo", "ibura", "ilha do leite", "ilha do retiro", "ilha joana bezerra", "imbiribeira", "ipsep", "iputinga", "jaqueira", "jardim sao paulo", "jiquia", "jordao", "linha do tiro", "macaxeira", "madalena", "mangabeira", "mangueira", "monteiro", "morro da conceicao", "mustardinha", "nova descoberta", "paissandu", "parnamirim", "passarinho", "pau ferro", "peixinhos", "pina", "poco", "ponto de parada", "porto da madeira", "prado", "recife", "rosarinho", "san martin", "sancho", "santana", "santo amaro", "santo antonio", "sao jose", "sitio dos pintos", "soledade", "tamarineira", "tejipio", "torre", "torreao", "torroes", "toto", "varzea", "vasco da gama", "zumbi"];
+  const graus = [4.0, 11.0, 9.0, 5.0, 6.0, 7.0, 6.0, 7.0, 8.0, 10.0, 5.0, 4.0, 4.0, 9.0, 5.0, 4.0, 3.0, 5.0, 7.0, 4.0, 3.0, 4.0, 5.0, 7.0, 11.0, 4.0, 5.0, 4.0, 5.0, 3.0, 3.0, 9.0, 6.0, 9.0, 4.0, 5.0, 4.0, 7.0, 5.0, 6.0, 4.0, 4.0, 9.0, 5.0, 4.0, 8.0, 4.0, 5.0, 6.0, 7.0, 4.0, 8.0, 5.0, 7.0, 7.0, 3.0, 6.0, 4.0, 7.0, 5.0, 4.0, 5.0, 5.0, 4.0, 7.0, 6.0, 6.0, 4.0, 1.0, 3.0, 6.0, 6.0, 5.0, 4.0, 7.0, 6.0, 6.0, 10.0, 4.0, 6.0, 7.0, 5.0, 7.0, 2.0, 2.0, 8.0, 5.0, 7.0, 4.0, 4.0, 3.0, 4.0, 5.0, 4.0];
+  const densidadeEgo = [1.6, 0.6667, 0.8889, 1.3333, 1.2381, 1.1429, 1.2381, 1.0, 1.0556, 0.7636, 1.2, 1.4, 1.4, 0.8, 1.3333, 1.6, 1.6667, 1.3333, 1.0, 1.6, 2.0, 1.8, 1.3333, 1.0714, 0.697, 1.6, 1.2, 1.6, 1.3333, 1.6667, 1.6667, 0.8, 1.1429, 0.7556, 1.6, 1.2, 1.4, 1.0714, 1.3333, 1.1429, 1.8, 1.8, 0.8, 1.0667, 1.8, 1.0, 1.6, 1.3333, 1.1429, 1.0714, 1.8, 0.8889, 1.4667, 1.1429, 1.1429, 1.6667, 1.1429, 1.6, 1.0, 1.4667, 1.6, 1.3333, 1.4667, 1.6, 1.0, 1.1429, 1.2381, 1.4, 2.0, 1.6667, 1.0476, 1.1429, 1.6, 1.6, 1.0, 1.1429, 1.1429, 0.7636, 1.6, 1.2381, 0.9286, 1.3333, 1.0, 2.0, 2.0, 0.9444, 1.2, 1.0714, 1.6, 1.6, 1.6667, 1.4, 1.3333, 1.6];
+  const microrregioes = [3, 5, 2, 3, 3, 3, 2, 3, 5, 2, 5, 2, 6, 1, 2, 5, 6, 3, 3, 1, 5, 2, 2, 2, 3, 3, 4, 4, 1, 6, 5, 4, 3, 5, 3, 3, 2, 2, 4, 3, 5, 2, 3, 3, 2, 6, 1, 4, 1, 6, 6, 4, 3, 5, 5, 6, 2, 3, 4, 3, 5, 3, 3, 5, 3, 1, 3, 3, 3, 2, 6, 3, 2, 2, 4, 1, 2, 5, 5, 3, 1, 1, 1, 3, 1, 3, 5, 4, 2, 4, 5, 4, 3, 4];
+  const nodeX = [0.3000000000000016, -2.5000000000000053, 9.500000000000002, 0.15270950097354774, -0.2822748560729691, -0.984613686054443, 9.288924172750681, -1.9214664058744848, -2.766421636210502, 8.681155550916426, -3.525126265847089, 7.750000000000002, 9.500000000000002, 15.5, 6.607768621834258, -4.660607986722191, 8.474873734152919, -3.0490268235913205, -4.314571467265908, 14.944387364909135, -6.000000000000005, 5.392231378165746, 4.250000000000003, 3.318844449083579, -5.658924875911867, -7.0192265782824155, -8.5, -8.968911086754463, 13.453952545506603, 6.000000000000002, -7.33939201327782, -10.25, -8.331870378641458, -8.474873734152922, -9.535478511783007, -10.57377159911572, 2.7110758272493225, 2.5000000000000018, -12.0, -11.39820020985581, -9.233578363789508, 2.7110758272493225, -11.970214978451654, -12.263069130072463, 3.318844449083578, 3.525126265847086, 11.501898066043502, -13.75, 9.707987431191501, 2.5000000000000018, 3.525126265847085, -15.031088913245537, -12.263069130072465, -9.500000000000005, -9.233578363789508, 6.000000000000001, 4.25, -11.970214978451654, -15.5, -11.39820020985581, -8.474873734152922, -10.573771599115723, -9.535478511783008, -7.339392013277822, -8.33187037864146, 8.64177459234926, -7.019226578282416, -5.658924875911873, -4.314571467265912, 5.392231378165746, 8.474873734152919, -3.049026823591319, 6.607768621834257, 7.75, -15.031088913245537, 8.64177459234926, 8.681155550916424, -6.000000000000006, -4.660607986722191, -1.9214664058744821, 9.707987431191501, 11.501898066043502, 13.453952545506601, -0.9846136860544412, 14.944387364909135, -0.28227485607297, -3.5251262658470894, -13.750000000000002, 9.288924172750681, -12.0, -2.7664216362105023, -10.25, 0.15270950097354774, -8.968911086754465];
+  const nodeY = [10.392304845413264, -10.39230484541326, 10.392304845413264, 11.746618618742716, 13.03760618524293, 14.204902401133985, 11.589375347053105, 15.193925792717373, -9.052912832135446, 12.642061479316151, -7.917431111260345, 13.423393758658799, -10.392304845413264, 0.0, 13.839131980955992, -7.1587264816237575, -7.917431111260348, 15.95843072542321, 16.46266979828437, 1.8922428610945914, -6.8923048454132605, 13.839131980955992, 13.4233937586588, 12.642061479316151, 16.683065352675342, 16.609311937424877, 1.4695761589768238e-15, 1.7500000000000013, 3.1837119837408143, -6.892304845413264, -7.1587264816237575, 3.0310889132455365, 16.24485818025905, -7.917431111260344, 15.606745533801675, 14.724811436189832, 11.589375347053105, 10.392304845413264, 3.5000000000000013, 13.6402941456285, -9.052912832135446, 9.195234343773423, 12.403904485269937, 11.073454661484098, 8.142548211510377, -7.917431111260347, 3.464375046583265, 3.031088913245537, 2.645123510239904, -10.392304845413264, -12.867178579566179, 1.7500000000000013, 9.711155029342434, -10.39230484541326, -11.731696858691075, -13.892304845413264, 7.361215932167729, 8.380705205556591, 1.898202538678397e-15, 7.144315545198026, -12.867178579566176, 6.059798254636699, 5.177864157024854, -13.625883209202764, 4.539751510567478, 0.9860639489450038, 4.175297753401649, 4.101544338151183, 4.321939892542159, 6.945477709870536, -12.86717857956618, 4.8261789654033205, 6.945477709870536, 7.3612159321677275, -1.7499999999999976, -0.9860639489450029, 8.142548211510375, -13.89230484541326, -13.625883209202764, 5.590683898109156, -2.6451235102399036, -3.4643750465832643, -3.1837119837408148, 6.579707289692545, -1.8922428610945914, 7.747003505583595, -12.867178579566177, -3.031088913245533, 9.195234343773423, -3.4999999999999987, -11.731696858691077, -3.031088913245534, 9.03799107208381, -1.75];
+  const edges = [[33, 78], [33, 91], [33, 90], [33, 38], [33, 89], [33, 53], [33, 27], [33, 77], [33, 86], [36, 67], [36, 56], [36, 18], [36, 11], [0, 39], [0, 42], [0, 37], [0, 76], [78, 90], [78, 86], [78, 30], [30, 86], [30, 90], [91, 27], [91, 51], [28, 82], [28, 81], [28, 48], [28, 46], [28, 13], [69, 22], [69, 9], [69, 23], [82, 81], [82, 75], [82, 48], [82, 19], [82, 1], [81, 75], [81, 80], [81, 13], [75, 80], [75, 16], [44, 9], [44, 37], [44, 23], [44, 72], [76, 42], [76, 85], [76, 37], [76, 72], [76, 9], [22, 9], [22, 21], [22, 41], [22, 2], [25, 66], [25, 79], [25, 71], [25, 24], [66, 79], [66, 85], [66, 52], [66, 24], [43, 35], [48, 65], [48, 47], [48, 1], [19, 70], [19, 75], [46, 13], [46, 65], [46, 48], [60, 77], [60, 63], [60, 54], [60, 1], [80, 13], [80, 39], [80, 88], [80, 84], [80, 23], [13, 39], [13, 34], [13, 65], [13, 42], [13, 84], [39, 42], [39, 37], [34, 65], [34, 42], [34, 58], [79, 52], [79, 71], [65, 47], [65, 58], [42, 87], [42, 85], [42, 52], [42, 58], [87, 93], [87, 58], [87, 31], [87, 79], [87, 66], [87, 52], [9, 85], [9, 14], [9, 23], [9, 2], [9, 72], [72, 23], [38, 27], [38, 89], [38, 51], [21, 73], [21, 41], [21, 2], [93, 74], [93, 58], [93, 31], [85, 52], [85, 24], [15, 74], [15, 77], [15, 63], [15, 1], [27, 51], [88, 37], [88, 23], [20, 8], [20, 45], [50, 8], [50, 45], [50, 49], [50, 20], [73, 41], [73, 11], [73, 2], [55, 45], [55, 12], [74, 77], [74, 31], [74, 47], [74, 1], [35, 26], [35, 7], [58, 47], [89, 77], [89, 31], [51, 31], [26, 91], [26, 7], [51, 26], [51, 61], [77, 53], [77, 63], [77, 54], [67, 17], [67, 18], [53, 8], [53, 86], [53, 40], [53, 10], [53, 54], [8, 10], [8, 40], [8, 54], [40, 54], [40, 77], [74, 58], [41, 2], [71, 24], [71, 61], [11, 56], [11, 2], [14, 59], [14, 5], [14, 6], [14, 2], [59, 5], [59, 24], [59, 9], [59, 85], [24, 64], [24, 3], [24, 62], [24, 5], [24, 92], [24, 61], [56, 4], [4, 18], [56, 6], [56, 18], [56, 2], [37, 23], [37, 72], [16, 70], [70, 12], [70, 49], [17, 18], [17, 64], [17, 32], [47, 1], [63, 1], [45, 12], [45, 49], [45, 8], [4, 62], [4, 5], [4, 92], [4, 6], [3, 57], [3, 61], [3, 64], [3, 7], [62, 5], [62, 92], [62, 6], [5, 6], [92, 18], [92, 64], [12, 49], [6, 2], [57, 64], [57, 7], [57, 32], [18, 64], [64, 32], [61, 7], [49, 1], [49, 54], [49, 8], [54, 1], [83, 35], [83, 26], [29, 55], [29, 10], [29, 45], [68, 43], [43, 32], [43, 17], [43, 67], [31, 79], [31, 38], [31, 77], [31, 71], [71, 51], [19, 1], [1, 70], [70, 75], [51, 7], [7, 32], [32, 35], [16, 82], [85, 5], [88, 39], [10, 45], [10, 86]];
+  const pathNodeIdx = [64, 92, 62, 5, 59, 85, 76, 37, 88, 80, 75, 70, 12];
+  const pathEdgeX = [-8.33187037864146, 0.15270950097354774, null, 0.15270950097354774, -9.535478511783008, null, -9.535478511783008, -0.984613686054443, null, -0.984613686054443, -11.39820020985581, null, -11.39820020985581, -0.28227485607297, null, -0.28227485607297, 8.681155550916424, null, 8.681155550916424, 2.5000000000000018, null, 2.5000000000000018, 9.288924172750681, null, 9.288924172750681, 9.707987431191501, null, 9.707987431191501, 8.64177459234926, null, 8.64177459234926, 8.474873734152919, null, 8.474873734152919, 9.500000000000002, null];
+  const pathEdgeY = [4.539751510567478, 9.03799107208381, null, 9.03799107208381, 5.177864157024854, null, 5.177864157024854, 14.204902401133985, null, 14.204902401133985, 7.144315545198026, null, 7.144315545198026, 7.747003505583595, null, 7.747003505583595, 8.142548211510375, null, 8.142548211510375, 10.392304845413264, null, 10.392304845413264, 9.195234343773423, null, 9.195234343773423, -2.6451235102399036, null, -2.6451235102399036, -0.9860639489450029, null, -0.9860639489450029, -12.86717857956618, null, -12.86717857956618, -10.392304845413264, null];
+  const uniqueMicros = [1, 2, 3, 4, 5, 6];
+  const micColorIndex = {"1": 0, "2": 1, "3": 2, "4": 3, "5": 4, "6": 5};
+
+  const palette = [
+    "#22c55e", "#0ea5e9", "#eab308", "#a855f7", "#f97316",
+    "#ef4444", "#14b8a6", "#3b82f6", "#ec4899", "#84cc16"
+  ];
+
+  function colorForMic(mic) {
+    if (mic === -1 || mic === null) return "#9ca3af";
+    const idx = micColorIndex[String(mic)] ?? 0;
+    return palette[idx % palette.length];
+  }
+
+  function buildFigure(highlightTerm = "", highlightPath = false) {
+    const term = (highlightTerm || "").trim().toUpperCase();
+
+    // mapa de vizinhança
+    const vizinhos = {};
+    for (const [u, v] of edges) {
+      if (!vizinhos[u]) vizinhos[u] = new Set();
+      if (!vizinhos[v]) vizinhos[v] = new Set();
+      vizinhos[u].add(v);
+      vizinhos[v].add(u);
+    }
+
+    let searchIndices = [];
+    if (term) {
+      bairros.forEach((b, idx) => {
+        if (b.toUpperCase().includes(term)) {
+          searchIndices.push(idx);
+        }
+      });
+    }
+
+    const neighborSet = new Set();
+    for (const idx of searchIndices) {
+      neighborSet.add(idx);
+      const neigh = vizinhos[idx] || new Set();
+      for (const v of neigh) neighborSet.add(v);
+    }
+
+    const maxDeg = Math.max(...graus);
+    const sizes = graus.map(d => 10 + 12 * (d / (maxDeg || 1)));
+
+    const lineWidth = bairros.map((_, idx) => {
+      const inSearch = searchIndices.includes(idx);
+      const inNeighbor = neighborSet.has(idx);
+      const inPath = highlightPath && pathNodeIdx.includes(idx);
+      if (inSearch) return 3.2;
+      if (inNeighbor) return 2.4;
+      if (inPath) return 2.8;
+      return 1.0;
+    });
+
+    const lineColor = bairros.map((_, idx) => {
+      const inSearch = searchIndices.includes(idx);
+      const inNeighbor = neighborSet.has(idx);
+      const inPath = highlightPath && pathNodeIdx.includes(idx);
+      if (inSearch) return "#ffffff";       // destaque principal
+      if (inNeighbor) return "#1850ed";     // vizinhos
+      if (inPath) return "#ffffff";         // caminho ND-BV
+      return "#020617";
+    });
+
+    const nodeTextColor = bairros.map((_, idx) => {
+      const inSearch = searchIndices.includes(idx);
+      const inNeighbor = neighborSet.has(idx);
+      const inPath = highlightPath && pathNodeIdx.includes(idx);
+      if (inSearch) return "#d6d6d6";       // destaque principal
+      if (inNeighbor || inPath) return "#ffffff";     // vizinhos
+      return "#1f2937";
+    });
+
+    // Arestas: se não há busca, todas cinza.
+    // Se há busca, arestas só aparecem fortes se incidentes a nó pesquisado/vizinho.
+    const edgeColors = [];
+    const edgeWidths = [];
+    for (const [u, v] of edges) {
+      const incidentHighlighted =
+        (neighborSet.has(u) && neighborSet.has(v)) ||
+        (searchIndices.includes(u) || searchIndices.includes(v));
+      if (!term) {
+        edgeColors.push("#1f2937");
+        edgeWidths.push(1);
+      } else if (incidentHighlighted) {
+        edgeColors.push("#1850ed");
+        edgeWidths.push(2.8);
+      } else {
+        edgeColors.push("rgba(31,41,55,0.15)");
+        edgeWidths.push(0.5);
+      }
+    }
+
+    const baseEdges = {
+      x: [],
+      y: [],
+      mode: "lines",
+      line: { color: "#1f2937", width: 1 },
+      hoverinfo: "none",
+      name: "Interconexões"
+    };
+
+    // reconstruir edgeX/edgeY com cores por segmento
+    const edgeTraces = [];
+    let currentX = [];
+    let currentY = [];
+    let currentColor = null;
+    let currentWidth = null;
+
+    for (let i = 0; i < edges.length; i++) {
+      const [u, v] = edges[i];
+      const c = edgeColors[i];
+      const w = edgeWidths[i];
+      // cada aresta vira um pequeno trace próprio pra termos cor/espessura diferentes
+      edgeTraces.push({
+        x: [nodeX[u], nodeX[v]],
+        y: [nodeY[u], nodeY[v]],
+        mode: "lines",
+        line: { color: c, width: w },
+        hoverinfo: "none",
+        showlegend: false
+      });
+    }
+
+    const pathEdges = {
+      x: pathEdgeX,
+      y: pathEdgeY,
+      mode: "lines",
+      line: { color: "#1850ed", width: highlightPath ? 4 : 0 },
+      hoverinfo: "none",
+      name: "Percurso ND → BV (Setúbal)",
+      showlegend: false
+    };
+
+    const nodes = {
+      x: nodeX,
+      y: nodeY,
+      mode: "markers+text",
+      text: bairros.map(b => b.toUpperCase()),
+      textposition: "top center",
+      textfont: { size: 10, color: nodeTextColor },
+      hovertemplate:
+        "<b>%{text}</b><br>" +
+        "Grau: %{customdata[0]}<br>" +
+        "Microrregião: %{customdata[1]}<br>" +
+        "Densidade ego: %{customdata[2]:.4f}<extra></extra>",
+      customdata: bairros.map((_, i) => [graus[i], microrregioes[i], densidadeEgo[i]]),
+      marker: {
+        size: sizes,
+        color: microrregioes.map(mic => colorForMic(mic)),
+        line: {
+          width: lineWidth,
+          color: lineColor
+        }
+      }
+    };
+
+    const layout = {
+      margin: { t: 24, r: 16, b: 16, l: 16 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#020617",
+      xaxis: {
+        showgrid: false,
+        zeroline: false,
+        showticklabels: false
+      },
+      yaxis: {
+        showgrid: false,
+        zeroline: false,
+        showticklabels: false
+      },
+      showlegend: false
+    };
+
+    const data = [...edgeTraces, pathEdges, nodes];
+
+    Plotly.newPlot("graph", data, layout, { displayModeBar: false });
+
+    const legend = document.getElementById("micLegend");
+    legend.innerHTML = "";
+    const used = Array.from(new Set(microrregioes.filter(m => m !== -1))).sort((a,b) => a-b);
+    if (used.length === 0) {
+      legend.textContent = "Microrregiões não disponíveis nos dados carregados.";
+      return;
+    }
+    legend.innerHTML = "Microrregiões (cores dos nós): ";
+    used.forEach(mic => {
+      const span = document.createElement("span");
+      span.className = "badge";
+      const dot = document.createElement("span");
+      dot.className = "badge-dot";
+      dot.style.backgroundColor = colorForMic(mic);
+      span.appendChild(dot);
+      const text = document.createTextNode("Mic. " + mic);
+      span.appendChild(text);
+      legend.appendChild(span);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let highlightPath = false;
+    buildFigure("", highlightPath);
+
+    const searchInput = document.getElementById("searchInput");
+    const togglePathBtn = document.getElementById("togglePathBtn");
+
+    searchInput.addEventListener("input", (e) => {
+      const term = e.target.value || "";
+      buildFigure(term, highlightPath);
+    });
+
+    togglePathBtn.addEventListener("click", () => {
+      highlightPath = !highlightPath;
+      if (highlightPath) {
+        togglePathBtn.classList.add("active");
+      } else {
+        togglePathBtn.classList.remove("active");
+      }
+      buildFigure(searchInput.value || "", highlightPath);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <title>Projeto – Grafos do Recife</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                background: #0b1120;
+                color: #e5e7eb;
+            }
+
+            header {
+                padding: 40px 32px 10px 32px;
+            }
+
+            h1 {
+                font-size: 32px;
+                margin: 0;
+            }
+
+            .subtitle {
+                margin-top: 4px;
+                font-size: 14px;
+                color: #9ca3af;
+            }
+
+            main {
+                padding: 20px 32px 40px 32px;
+                line-height: 1.7;
+                font-size: 16px;
+                max-width: 900px;
+            }
+
+            .card {
+                margin-top: 24px;
+                background: radial-gradient(circle at top left, #111827, #020617);
+                padding: 20px 28px;
+                border-radius: 16px;
+                border: 1px solid #1f2937;
+                box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+            }
+
+            .card h2 {
+                margin-top: 0;
+                color: #fff;
+            }
+
+            .btn-container {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-top: 16px;
+            }
+
+            .btn {
+                background: #1e293b;
+                padding: 10px 16px;
+                border-radius: 8px;
+                color: #d1d5db;
+                text-decoration: none;
+                font-size: 15px;
+                border: 1px solid #334155;
+                transition: 0.2s;
+            }
+
+            .btn:hover {
+                background: #334155;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Projeto de Grafos – Bairros do Recife</h1>
+            <div class="subtitle">Navegue pelas seções 7, 8 e 9, e parte 2 — versões interativas em HTML</div>
+        </header>
+        <main>
+            <section id="s7" class="card">
+                <h2>Seção 7 – Árvore de Percurso</h2>
+                <p>
+                    Contém o percurso completo entre <strong>Nova Descoberta → Setúbal</strong>, 
+                    visualizado em HTML com PyVis/Plotly.
+                </p>
+
+                <div class="btn-container">
+                    <a class="btn" href="arvore_percurso.html" target="_blank">
+                        Abrir visualização da Seção 7
+                    </a>
+                </div>
+            </section>
+            <section id="s8" class="card">
+                <h2>Seção 8 – Explorações Analíticas Avançadas</h2>
+                <p>
+                    Inclui análise interativa completa: distribuição de graus, top 20 por densidade 
+                    de ego-subrede, e subgrafo dos 10 bairros mais conectados.
+                </p>
+
+                <div class="btn-container">
+                    <a class="btn" href="vis_secao8.html" target="_blank">
+                    Abrir visualização da Seção 8
+                    </a>
+                </div>
+            </section>
+            <section id="s9" class="card">
+                <h2>Seção 9 – Grafo Interativo Completo</h2>
+                <p>
+                    O grafo completo dos bairros do Recife com:
+                    <br>• tooltip mostrando grau, microrregião e densidade da ego-subrede;
+                    <br>• busca por bairro;
+                    <br>• botão para destacar o caminho mínimo entre <strong>Nova Descoberta → Setúbal (Boa Viagem)</strong>.
+                </p>
+                <div class="btn-container">
+                    <a class="btn" href="grafo_interativo.html" target="_blank">
+                    Abrir grafo interativo (Seção 9)
+                    </a>
+                </div>
+            </section>
+            <section id="parte2" class="card">
+                <h2>Parte 2 – Dataset Maior e Análise de Algoritmos</h2>
+                <p>
+                    
+                </p>
+
+                <div class="btn-container">
+                    <a class="btn" href="vis_parte2.html" target="_blank">
+                        Abrir visualização da Parte 2
+                    </a>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
