@@ -4,7 +4,7 @@ class Graph:
     def __init__(self, directed):
         self.adj_list = {}
         self.nodes = {}
-        self.directed = directed 
+        self.directed = directed
 
     def add_node(self, node_name, microrregiao=None):
         if node_name not in self.adj_list:

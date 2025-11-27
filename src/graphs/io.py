@@ -63,7 +63,6 @@ def carregar_grafo2(path_edges='data/bitcoinGraph.csv'):
             target = int(row['TARGET'])
             rate = float(row['RATE'])
 
-            # Garante que todos os nós do CSV de edges existam no grafo
             if source not in btc_g.nodes:
                 btc_g.add_node(source)
             if target not in btc_g.nodes:
