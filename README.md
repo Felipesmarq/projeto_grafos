@@ -9,3 +9,10 @@
 1. Començando de `projeto_grafos`
 2. Executar `cd data/out/html`
 3. Por último executar `start .\index.html`
+
+##Requisitos
+1. Baixar  `pandas`
+2. Abra o prompt de Comando
+3. Insira `pip install pandas`
+
+
