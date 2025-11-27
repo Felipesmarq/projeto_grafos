@@ -5,6 +5,7 @@
 ```shell
   .
   ├── data/                                # Dados que foram usados na parte 1 e 2
+      └── relatório                        # Relatório do projeto
   ├── out/                                 # Pasta que contém todas as saidas do projeto(.json/.html/.csv)
       └──html/                             # Pasta com os htmls de visualização do projeto
          ├── arvore_percurso.html

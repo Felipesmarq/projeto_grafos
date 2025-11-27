@@ -12,6 +12,14 @@
             border: 1px solid #444;
             background: #1a1a1a;
         }
+        .box {
+            background: #222;
+            border-left: 4px solid #4cc9f0;
+            padding: 15px;
+            margin-top: 20px;
+            width: 95%;
+        }
+        h3 { color: #4cc9f0; }
     </style>
 
     <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
@@ -22,8 +30,20 @@
 
     <div id="graph"></div>
 
-    <script>
+    <div class="box">
+        <h3>Discussão Crítica dos Algoritmos</h3>
+        <p><b>BFS</b> é ideal para grafos não ponderados. Rastrei o menor caminho apenas em número de arestas, mas ignora completamente pesos positivos ou negativos. Funciona bem em explorações rápidas e conexidade.</p>
 
+        <p><b>DFS</b> é útil para identificar componentes, ciclos e estruturas gerais, mas não serve para caminhos mínimos — pode explorar caminhos muito piores e não considera pesos. É adequado quando a prioridade é cobertura e não custo.</p>
+
+        <p><b>Dijkstra</b> oferece excelente desempenho em grafos com pesos positivos. Entretanto, seu design não permite pesos negativos: ele assume que "expandir mais cedo é sempre melhor", o que falha quando existe uma aresta negativa.</p>
+
+        <p><b>Bellman-Ford</b> aceita pesos negativos e detecta ciclos negativos, tornando-se mais seguro para este tipo de grafo. Porém, paga o preço: é muito mais lento (O(V·E)) e não escala tão bem com grafos grandes.</p>
+
+        <p><b>Limitações gerais dos pesos:</b> A presença de pesos negativos pode distorcer caminhos, criar ciclos negativos ou invalidar algoritmos rápidos como Dijkstra. A interpretação dos pesos também importa: neste grafo, há pesos negativos e valores extremos, o que exige Bellman-Ford ou pré-processamento para normalização dos custos.</p>
+    </div>
+
+    <script>
         var edges = new vis.DataSet([
             { from: 23966, to: 7372, label: "1" },
             { from: 23967, to: 2493, label: "1" },
@@ -126,9 +146,6 @@
             { from: 24064, to: 7334, label: "10" }
         ]);
 
-        // ===================================
-        // GERA OS NÓS AUTOMATICAMENTE
-        // ===================================
         var nodes = new vis.DataSet([]);
 
         edges.forEach(e => {
@@ -136,9 +153,6 @@
             if (!nodes.get(e.to)) nodes.add({ id: e.to, label: String(e.to) });
         });
 
-        // ===================================
-        // CRIA O GRAFO
-        // ===================================
         var container = document.getElementById("graph");
         var data = { nodes: nodes, edges: edges };
 
@@ -153,10 +167,7 @@
                 color: "#aaa",
                 font: { color: "white", size: 14 }
             },
-            physics: {
-                enabled: true,
-                stabilization: false
-            }
+            physics: { enabled: true, stabilization: false }
         };
 
         new vis.Network(container, data, options);
