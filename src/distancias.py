@@ -34,8 +34,3 @@ def calcular_distancias(grafo):
             "custo": custo,
             "caminho": caminho
         }, f, indent=4, ensure_ascii=False)
-
-
-
-if __name__ == "__main__":
-    calcular_distancias()

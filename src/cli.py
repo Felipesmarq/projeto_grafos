@@ -7,10 +7,7 @@ from .graphs import algorithms
 
 
 def medir_algoritmo(nome, func, *args, **kwargs):
-    """
-    Executa um algoritmo medindo tempo e memória.
-    Retorna um dicionário formatado.
-    """
+
     tracemalloc.start()
     inicio = time.perf_counter()
 
@@ -32,52 +29,59 @@ def medir_algoritmo(nome, func, *args, **kwargs):
 
 
 def gerar_relatorio_parte2(grafo):
-    """
-    Executa todos os algoritmos pedidos e gera o arquivo JSON.
-    """
 
     resultados = []
 
-    origem = 1
-    destino = 5
+    origem = [2,3,7, 9, 13,]
+    destino = [17,19,23, 29, 31,]
     fontes_multisource = [464, 24, 98]
 
+    for i in range(len(origem)):
+        print(f"\nExecutando Dijkstra {i+1}...")
+        resultados.append(medir_algoritmo(
+            f"Dijkstra {i+1}",
+            algorithms.dijkstra,
+            grafo,
+            origem[i],
+            destino[i],
+            normalized=True
+        ))
 
-    print("\nExecutando Dijkstra...")
+    print("Executando Bellman-Ford sem ciclo...")
     resultados.append(medir_algoritmo(
-        "Dijkstra",
-        algorithms.dijkstra,
-        grafo,
-        origem,
-        destino,
-        normalized=True
-    ))
-
-    print("Executando Bellman-Ford...")
-    resultados.append(medir_algoritmo(
-        "Bellman-Ford",
+        "Bellman-Ford sem ciclo negativo",
         algorithms.bellman_ford,
         grafo,
-        origem,
-        destino,
+        origem[1],
+        destino[1],
         normalized=True
     ))
 
-    print("Executando BFS...")
+    print("Executando Bellman-Ford com ciclo...")
     resultados.append(medir_algoritmo(
-        "BFS",
-        algorithms.bfs,
+        "Bellman-Ford com ciclo negativo",
+        algorithms.bellman_ford,
         grafo,
-        origem
+        origem[3],
+        destino[3],
+        normalized=False
     ))
-
-    print("Executando DFS...")
-    resultados.append(medir_algoritmo(
-        "DFS",
-        algorithms.dfs,
-        grafo,
-        origem
-    ))
+    for i in range(3):
+        print(f"Executando BFS {i+1}...")
+        resultados.append(medir_algoritmo(
+            f"BFS {i+1}",
+            algorithms.bfs,
+            grafo,
+            origem[i]
+        ))
+    for i in range(3):
+        print(f"Executando DFS {i+1}...")
+        resultados.append(medir_algoritmo(
+            f"DFS {i+1}",
+            algorithms.dfs,
+            grafo,
+            origem[i]
+        ))
 
     print("Executando BFS Multisource...")
     resultados.append(medir_algoritmo(
@@ -95,16 +99,6 @@ def gerar_relatorio_parte2(grafo):
         fontes_multisource
     ))
 
-    #print("\nExecutando Dijkstra...")
-    #resultados.append(medir_algoritmo(
-    #    "Dijkstra",
-    #    algorithms.dijkstra,
-     #   grafo,
-    #    origem,
-    #    destino
-    #))
-
-    # Salva o JSON
     with open("out/parte2_report.json", "w", encoding="utf-8") as f:
         json.dump(resultados, f, indent=4)
 
@@ -120,7 +114,3 @@ def main():
         return
 
     gerar_relatorio_parte2(grafo)
-
-
-if __name__ == "__main__":
-    main()

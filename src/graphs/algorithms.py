@@ -49,6 +49,24 @@ def bellman_ford(grafo, origem, destino, normalized=False):
 
     anterior = {n: None for n in grafo.get_nodes()}
 
+    if normalized:
+        tem_ciclo_negativo = False
+    else:
+        tem_ciclo_negativo = False
+        for atual in grafo.get_nodes():
+            if dist[atual] == float("inf"):
+                continue
+            for viz, peso in grafo.adj_list[atual]:
+                if dist[atual] + peso < dist[viz]:
+                    tem_ciclo_negativo = True
+                    break
+            if tem_ciclo_negativo:
+                break
+
+        if tem_ciclo_negativo:
+            print("Erro: Ciclo negativo detectado!")
+            return float("-inf"), []
+
     for _ in range(len(grafo.get_nodes()) - 1):
         trocou = False
         
@@ -68,23 +86,6 @@ def bellman_ford(grafo, origem, destino, normalized=False):
         
         if not trocou:
             break
-    if normalized:
-        tem_ciclo_negativo = False
-    else:
-        tem_ciclo_negativo = False
-        for atual in grafo.get_nodes():
-            if dist[atual] == float("inf"):
-                continue
-            for viz, peso in grafo.adj_list[atual]:
-                if dist[atual] + peso < dist[viz]:
-                    tem_ciclo_negativo = True
-                    break
-            if tem_ciclo_negativo:
-                break
-
-        if tem_ciclo_negativo:
-            print("Erro: Ciclo negativo detectado!")
-            return float("-inf"), []
 
     caminho = []
     node = destino
@@ -149,10 +150,6 @@ def dfs(grafo, origem):
         'has_cycle': has_cycle
     }
 
-# ===============================================================
-# BFS a partir de múltiplas fontes (≥ 3)
-# Retorna: ordem de visita, camadas, ciclos detectados
-# ===============================================================
 
 def bfs_multisource(grafo, fontes):
 
@@ -182,10 +179,6 @@ def bfs_multisource(grafo, fontes):
 
     return ordem, camada, ciclos
 
-# ===============================================================
-# DFS a partir de múltiplas fontes (≥ 3)
-# Retorna: ordem, profundidades e ciclos
-# ===============================================================
 
 def dfs_multisource(grafo, fontes):
     visitado = set()
