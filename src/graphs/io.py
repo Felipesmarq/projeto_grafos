@@ -50,26 +50,9 @@ def carregar_grafo(path_nodes='data/bairros_unique.csv',
     return g
 
 
-def carregar_grafo2(path_nodes='data/nodes.csv', path_edges='data/bitcoinGraph.csv'):
+def carregar_grafo2(path_edges='data/bitcoinGraph.csv'):
     
     btc_g = Graph(True)
-
-    try:
-        df_nodes = pd.read_csv(path_nodes)
-        
-        for _, row in df_nodes.iterrows():
-            node_id = int(row['node_id'])
-
-            btc_g.add_node(node_name=node_id)
-            
-        print(f"--- Nós carregados: {len(btc_g.nodes)} usuários lidos de '{path_nodes}'")
-        
-    except FileNotFoundError:
-        print(f"Erro: Arquivo de nós não encontrado em '{path_nodes}'")
-        return None
-    except KeyError:
-        print("Erro: O 'nodes.csv' deve ter a coluna 'node_id'.")
-        return None
 
     try:
         df_edges = pd.read_csv(path_edges)

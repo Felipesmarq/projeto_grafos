@@ -2,11 +2,11 @@ import json
 import time
 import tracemalloc
 
-from graphs.io import carregar_grafo2
-from graphs import algorithms
+from .graphs.io import carregar_grafo2
+from .graphs import algorithms
 
 
-def medir_algoritmo(nome, func, *args):
+def medir_algoritmo(nome, func, *args, **kwargs):
     """
     Executa um algoritmo medindo tempo e memória.
     Retorna um dicionário formatado.
@@ -14,7 +14,7 @@ def medir_algoritmo(nome, func, *args):
     tracemalloc.start()
     inicio = time.perf_counter()
 
-    resultado = func(*args)
+    resultado = func(*args, **kwargs)
 
     fim = time.perf_counter()
     tempo = fim - inicio
@@ -42,13 +42,25 @@ def gerar_relatorio_parte2(grafo):
     destino = 5
     fontes_multisource = [464, 24, 98]
 
+
+    print("\nExecutando Dijkstra...")
+    resultados.append(medir_algoritmo(
+        "Dijkstra",
+        algorithms.dijkstra,
+        grafo,
+        origem,
+        destino,
+        normalized=True
+    ))
+
     print("Executando Bellman-Ford...")
     resultados.append(medir_algoritmo(
         "Bellman-Ford",
         algorithms.bellman_ford,
         grafo,
         origem,
-        destino
+        destino,
+        normalized=True
     ))
 
     print("Executando BFS...")

@@ -1,1 +1,11 @@
-{"ordem":{"0":94},"tamanho":{"0":258},"densidade":{"0":0.059}}
+[
+    {
+        "ordem":94,
+        "tamanho":258,
+        "densidade":0.059,
+        "Bairro com maior grau":"afogados",
+        "Maior grau":11,
+        "Bairro mais denso":"cacote",
+        "Maior densidade":2.0
+    }
+]

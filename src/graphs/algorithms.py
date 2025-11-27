@@ -1,7 +1,7 @@
 from collections import deque
 import heapq
 
-def dijkstra(grafo, origem, destino):
+def dijkstra(grafo, origem, destino, normalized=False):
     dist = {n: float("inf") for n in grafo.get_nodes()}
     dist[origem] = 0
 
@@ -17,9 +17,10 @@ def dijkstra(grafo, origem, destino):
             continue
 
         for viz, peso in grafo.adj_list.get(atual, []):
-            if peso < 0:
+            if peso < 0 and not normalized:
                 raise ValueError("Dijkstra não aceita arestas com peso negativo.")
-            
+            if normalized:
+                peso = 10 - peso
             novo_custo = atual_dist + peso
 
             if novo_custo < dist[viz]:
@@ -41,7 +42,7 @@ def dijkstra(grafo, origem, destino):
     return dist[destino], caminho
 
 
-def bellman_ford(grafo, origem, destino):
+def bellman_ford(grafo, origem, destino, normalized=False):
 
     dist = {n: float("inf") for n in grafo.get_nodes()}
     dist[origem] = 0
@@ -56,7 +57,8 @@ def bellman_ford(grafo, origem, destino):
                 continue
 
             for viz, peso in grafo.adj_list[atual]:
-                
+                if normalized:
+                    peso = 10 - peso
                 novo_custo = dist[atual] + peso
 
                 if novo_custo < dist[viz]:
@@ -66,21 +68,23 @@ def bellman_ford(grafo, origem, destino):
         
         if not trocou:
             break
-
-    tem_ciclo_negativo = False
-    for atual in grafo.get_nodes():
-        if dist[atual] == float("inf"):
-            continue
-        for viz, peso in grafo.adj_list[atual]:
-            if dist[atual] + peso < dist[viz]:
-                tem_ciclo_negativo = True
+    if normalized:
+        tem_ciclo_negativo = False
+    else:
+        tem_ciclo_negativo = False
+        for atual in grafo.get_nodes():
+            if dist[atual] == float("inf"):
+                continue
+            for viz, peso in grafo.adj_list[atual]:
+                if dist[atual] + peso < dist[viz]:
+                    tem_ciclo_negativo = True
+                    break
+            if tem_ciclo_negativo:
                 break
-        if tem_ciclo_negativo:
-            break
 
-    if tem_ciclo_negativo:
-        print("Erro: Ciclo negativo detectado!")
-        return float("-inf"), []
+        if tem_ciclo_negativo:
+            print("Erro: Ciclo negativo detectado!")
+            return float("-inf"), []
 
     caminho = []
     node = destino

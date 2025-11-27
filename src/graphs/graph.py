@@ -1,7 +1,7 @@
 import heapq
 
 class Graph:
-    def __init__(self, directed=False):
+    def __init__(self, directed):
         self.adj_list = {}
         self.nodes = {}
         self.directed = directed 

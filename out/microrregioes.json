@@ -1,1 +1,38 @@
-{"microrregiao":{"0":1,"1":2,"2":3,"3":4,"4":5,"5":6},"ordem":{"0":11,"1":18,"2":29,"3":12,"4":16,"5":8},"tamanho":{"0":44,"1":78,"2":124,"3":42,"4":68,"5":24},"densidade":{"0":0.8,"1":0.5098,"2":0.3054,"3":0.6364,"4":0.5667,"5":0.8571}}
+[
+    {
+        "microrregiao":1,
+        "ordem":11,
+        "tamanho":44,
+        "densidade":0.8
+    },
+    {
+        "microrregiao":2,
+        "ordem":18,
+        "tamanho":78,
+        "densidade":0.5098
+    },
+    {
+        "microrregiao":3,
+        "ordem":29,
+        "tamanho":124,
+        "densidade":0.3054
+    },
+    {
+        "microrregiao":4,
+        "ordem":12,
+        "tamanho":42,
+        "densidade":0.6364
+    },
+    {
+        "microrregiao":5,
+        "ordem":16,
+        "tamanho":68,
+        "densidade":0.5667
+    },
+    {
+        "microrregiao":6,
+        "ordem":8,
+        "tamanho":24,
+        "densidade":0.8571
+    }
+]
